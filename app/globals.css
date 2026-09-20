@@ -1,77 +1,71 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* ==========================================================================
    MU AETHEL - Estilos globales
    ========================================================================== */
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-    background-color: #03060f;
-  }
-
-  body {
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* Foco visible en todos los controles: navegación con teclado. */
-  :focus-visible {
-    outline: 2px solid #3ad6f0;
-    outline-offset: 2px;
-  }
-
-  /* Barra de scroll al tono del marco de inventario. */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #060c1c;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #26498a, #0a1428);
-    border: 1px solid #1c3766;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #3562ad, #16294d);
-  }
-
-  ::selection {
-    background: rgba(58, 214, 240, 0.28);
-    color: #d3dce8;
-  }
+html {
+  scroll-behavior: smooth;
+  background-color: #03060f;
 }
 
-@layer components {
-  /* Marco biselado reutilizable, al estilo de los paneles del juego.
-     Uso: <div className="mu-frame"> … </div> */
-  .mu-frame {
-    @apply relative border border-steel-700 bg-panel shadow-inset;
-  }
+body {
+  -webkit-font-smoothing: antialiased;
+}
 
-  .mu-frame::before,
-  .mu-frame::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-color: rgba(168, 182, 201, 0.45);
-  }
+/* Foco visible en todos los controles: navegación con teclado. */
+:focus-visible {
+  outline: 2px solid #3ad6f0;
+  outline-offset: 2px;
+}
 
-  .mu-frame::before {
-    top: -1px;
-    left: -1px;
-    border-top: 1px solid;
-    border-left: 1px solid;
-  }
+/* Barra de scroll al tono del marco de inventario. */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #060c1c;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #26498a, #0a1428);
+  border: 1px solid #1c3766;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #3562ad, #16294d);
+}
 
-  .mu-frame::after {
-    bottom: -1px;
-    right: -1px;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-  }
+::selection {
+  background: rgba(58, 214, 240, 0.28);
+  color: #d3dce8;
+}
+
+/* Marco biselado reutilizable, al estilo de los paneles del juego. */
+.mu-frame {
+  position: relative;
+  border-width: 1px;
+}
+
+.mu-frame::before,
+.mu-frame::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(168, 182, 201, 0.45);
+}
+
+.mu-frame::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.mu-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
 }
 
 /* Respetar la preferencia de movimiento reducido del sistema. */
