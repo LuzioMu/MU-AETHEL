@@ -1,12 +1,24 @@
 {
   "version": "1.0.1",
-  "downloadUrl": "https://muaethel.com/launcher/files",
+  "downloadUrl": "https://raw.githubusercontent.com/LuzioMu/MU-AETHEL/main/launcher/files",
   "files": [
     {
-      "path": "main.exe"
+      "path": "Data/Local/Common.bmd"
     },
     {
-      "path": "Data/Local/Eng/Text.bmd"
+      "path": "Data/Local/Custom.bmd"
+    },
+    {
+      "path": "Data/Local/Effects.bmd"
+    },
+    {
+      "path": "Data/Local/Items.bmd"
+    },
+    {
+      "path": "Data/Local/Pets.bmd"
+    },
+    {
+      "path": "Data/Local/Server.bmd"
     }
   ]
 }
