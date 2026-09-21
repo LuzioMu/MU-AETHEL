@@ -10,7 +10,7 @@ const translations = {
   es: {
     meta: {
       title: 'Mu Aethel - Season 6 Episode 3',
-      tagline: 'SERVIDOR SLOW / MEDIUM - SEASON 6 EPISODE 3',
+      tagline: 'SERVIDOR SLOW / MEDIUM',
     },
     nav: {
       home: 'Inicio',
@@ -20,11 +20,14 @@ const translations = {
       playNow: 'Jugar ahora',
     },
     hero: {
-      title: 'Acá nadie compra su poder. Se lo gana.',
-      claim: 'Sin VIP, sin packs, sin ventajas pagas. Cada set, cada ala y cada joya salen del esfuerzo propio, de la party que armaste y del PvP que ganaste.',
-      body: 'Mu Aethel es un servidor libre de pay-to-win. Una economía basada en el esfuerzo, eventos con recompensas reales y dos monedas internas para premiar el combate y el compañerismo.',
+      title: 'MU AETHEL',
+      subtitle: 'SEASON 6 EPISODE 3',
+      claim: 'Una experiencia clásica donde el poder se gana en el juego.',
+      badge1: '🛡️ 100% Play-to-Earn',
+      badge2: '⚔️ Cero Ventajas Pagas',
+      badge3: '💎 Economía por Mérito',
       ctaPrimary: 'Descargar Cliente',
-      ctaSecondary: 'Cómo funciona la economía',
+      ctaSecondary: 'Ver Economía',
       statExp: 'Experiencia',
       statDrop: 'Drop',
       statReset: 'Resets',
@@ -78,7 +81,7 @@ const translations = {
   en: {
     meta: {
       title: 'Mu Aethel - Season 6 Episode 3',
-      tagline: 'SLOW / MEDIUM SERVER - SEASON 6 EPISODE 3',
+      tagline: 'SLOW / MEDIUM SERVER',
     },
     nav: {
       home: 'Home',
@@ -88,11 +91,14 @@ const translations = {
       playNow: 'Play Now',
     },
     hero: {
-      title: 'Nobody buys power here. You earn it.',
-      claim: 'No VIP, no packs, no paid advantages. Every set, wing, and jewel comes from effort, teamwork, and won PvP.',
-      body: 'Mu Aethel is a 100% play-to-earn server. An effort-based economy, events with real rewards, and two internal tokens rewarding combat and teamwork.',
+      title: 'MU AETHEL',
+      subtitle: 'SEASON 6 EPISODE 3',
+      claim: 'A classic experience where power is earned strictly in-game.',
+      badge1: '🛡️ 100% Play-to-Earn',
+      badge2: '⚔️ Zero Paid Perks',
+      badge3: '💎 Merit-Based Economy',
       ctaPrimary: 'Download Client',
-      ctaSecondary: 'How Economy Works',
+      ctaSecondary: 'View Economy',
       statExp: 'Experience',
       statDrop: 'Drop Rate',
       statReset: 'Resets',
@@ -146,7 +152,7 @@ const translations = {
   pt: {
     meta: {
       title: 'Mu Aethel - Season 6 Episode 3',
-      tagline: 'SERVIDOR SLOW / MEDIUM - SEASON 6 EPISODE 3',
+      tagline: 'SERVIDOR SLOW / MEDIUM',
     },
     nav: {
       home: 'Início',
@@ -156,11 +162,14 @@ const translations = {
       playNow: 'Jogar Agora',
     },
     hero: {
-      title: 'Ninguém compra poder aqui. Você conquista.',
-      claim: 'Sem VIP, sem packs, sem vantagens pagas. Cada set, asa e jóia vem do seu esforço, da sua party e do PvP.',
-      body: 'Mu Aethel é um servidor totalmente livre de pay-to-win. Uma economia baseada no esforço com recompensas reais.',
+      title: 'MU AETHEL',
+      subtitle: 'SEASON 6 EPISODE 3',
+      claim: 'Uma experiência clássica onde o poder é conquistado no jogo.',
+      badge1: '🛡️ 100% Play-to-Earn',
+      badge2: '⚔️ Sem Vantagens Pagas',
+      badge3: '💎 Economia por Mérito',
       ctaPrimary: 'Baixar Cliente',
-      ctaSecondary: 'Como funciona a economia',
+      ctaSecondary: 'Ver Economia',
       statExp: 'Experiência',
       statDrop: 'Drop',
       statReset: 'Resets',
