@@ -1,0 +1,12 @@
+{
+  "version": "1.0.1",
+  "downloadUrl": "https://muaethel.com/launcher/files",
+  "files": [
+    {
+      "path": "main.exe"
+    },
+    {
+      "path": "Data/Local/Eng/Text.bmd"
+    }
+  ]
+}
