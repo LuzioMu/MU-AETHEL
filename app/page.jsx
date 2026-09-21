@@ -25,42 +25,61 @@ function Hero() {
   ];
 
   return (
-    <section id="inicio" className="relative scroll-mt-24 overflow-hidden min-h-[75vh] flex items-center justify-center bg-[#050a12]">
+    <section id="inicio" className="relative scroll-mt-24 overflow-hidden min-h-[70vh] flex items-center justify-center bg-[#050a12]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(24,37,56,0.8),rgba(5,10,18,1))]" />
-      <div className="absolute left-1/2 top-10 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-[#51e2f5]/10 blur-3xl pointer-events-none" />
+      <div className="absolute left-1/2 top-10 h-[350px] w-[500px] -translate-x-1/2 rounded-full bg-[#51e2f5]/10 blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-5xl px-4 py-16 text-center sm:px-6 lg:py-20 flex flex-col items-center">
-        <p className="font-data text-xs tracking-[0.25em] text-[#51e2f5] uppercase">{t('meta.tagline')}</p>
+      <div className="relative z-10 mx-auto max-w-5xl px-4 py-12 text-center sm:px-6 lg:py-16 flex flex-col items-center">
+        
+        {/* TAG SUPERIOR */}
+        <p className="font-data text-xs tracking-[0.3em] text-[#51e2f5] uppercase font-semibold">
+          {t('meta.tagline')}
+        </p>
 
-        <h1 className="mt-4 text-5xl leading-tight sm:text-7xl font-bold">
+        {/* TÍTULO PRINCIPAL EN DORADO */}
+        <h1 className="mt-3 text-6xl sm:text-8xl font-display font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#fff3b0] via-[#fce893] to-[#cba135] drop-shadow-[0_4px_12px_rgba(252,232,147,0.3)]">
           {t('hero.title')}
         </h1>
 
-        <p className="mt-4 max-w-2xl font-display text-2xl subtitle-mu sm:text-3xl mx-auto">
+        {/* SUBTÍTULO Y BAJADA */}
+        <p className="mt-2 text-lg sm:text-xl font-data tracking-widest text-slate-300 uppercase">
+          {t('hero.subtitle')}
+        </p>
+
+        <p className="mt-4 max-w-xl text-base text-slate-300 mx-auto leading-relaxed">
           {t('hero.claim')}
         </p>
 
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 mx-auto">
-          {t('hero.body')}
-        </p>
+        {/* BADGES VISUALES (REEMPLAZAN AL TEXTO LARGO) */}
+        <div className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-3 text-xs">
+          <span className="px-3 py-1.5 rounded-full bg-[#0d1b2a] border border-[#51e2f5]/30 text-[#51e2f5] font-medium tracking-wide">
+            {t('hero.badge1')}
+          </span>
+          <span className="px-3 py-1.5 rounded-full bg-[#0d1b2a] border border-[#fce893]/30 text-[#fce893] font-medium tracking-wide">
+            {t('hero.badge2')}
+          </span>
+          <span className="px-3 py-1.5 rounded-full bg-[#0d1b2a] border border-slate-700 text-slate-300 font-medium tracking-wide">
+            {t('hero.badge3')}
+          </span>
+        </div>
 
-        {/* BOTONES CON ANCHO CONTROLADO PARA EVITAR DESPLAZAMIENTOS */}
+        {/* BOTONES PRINCIPALES */}
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a
             href="#descargas"
-            className="mu-button mu-button-gold min-w-[200px] px-7 py-3.5 rounded font-display text-lg tracking-wide shadow-lg transition-transform hover:scale-105 text-center"
+            className="mu-button mu-button-gold min-w-[190px] px-7 py-3 rounded font-display text-base tracking-wide shadow-lg transition-transform hover:scale-105 text-center"
           >
             {t('hero.ctaPrimary')}
           </a>
           <a
             href="#economia"
-            className="mu-button min-w-[200px] px-7 py-3.5 rounded font-display text-lg tracking-wide shadow-lg transition-transform hover:scale-105 text-center"
+            className="mu-button min-w-[190px] px-7 py-3 rounded font-display text-base tracking-wide shadow-lg transition-transform hover:scale-105 text-center"
           >
             {t('hero.ctaSecondary')}
           </a>
         </div>
 
-        {/* PANEL DE RATES VINCULADO */}
+        {/* PANEL DE RATES */}
         <dl className="mt-12 grid w-full max-w-3xl grid-cols-2 gap-px mu-frame p-1 sm:grid-cols-4 rounded">
           {stats.map((stat, idx) => (
             <div key={idx} className="bg-[#0b1320]/90 px-4 py-3 text-center">
@@ -74,7 +93,6 @@ function Hero() {
   );
 }
 
-{/* CARACTERÍSTICAS Y NOVEDADES (I18N TRADUCIDO) */}
 function ServerFeatures() {
   const { t } = useI18n();
 
@@ -87,7 +105,7 @@ function ServerFeatures() {
     },
     {
       icon: "🗺️",
-      title: t('features.mapsTitle') || "Mapas Modificados",
+      title: t('features.mapsTitle') || "Mapas Remasterizados",
       tag: t('features.mapsTag') || "ZONAS PVP / SAFE",
       desc: t('features.mapsDesc') || "Zonas de leveo optimizadas y mapas especiales de PvP abierto sin penalizaciones."
     },
@@ -99,7 +117,7 @@ function ServerFeatures() {
     },
     {
       icon: "💎",
-      title: t('features.economyTitle') || "Economía Interna",
+      title: t('features.economyTitle') || "Economía Play-to-Earn",
       tag: t('features.economyTag') || "RECOMPENSAS P2E",
       desc: t('features.economyDesc') || "Sistema de tokens por méritos dentro del juego. Cero pay-to-win, premiando el esfuerzo."
     }
