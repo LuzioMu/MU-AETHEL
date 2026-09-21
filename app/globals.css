@@ -1,94 +1,113 @@
 @import "tailwindcss";
 
+/* Carga de fuentes medievales y limpias */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
 @theme {
   --color-slate-100: #f1f5f9;
   --color-slate-200: #e2e8f0;
   --color-slate-300: #cbd5e1;
   --color-slate-400: #94a3b8;
-  --color-panel: #060c1c;
-  --color-steel-700: #1c3766;
 }
 
-html {
-  scroll-behavior: smooth;
-  background-color: #03060f;
+/* Fondo principal estilo menú Mu Online (Azul medieval oscuro con gradiente) */
+html, body {
+  background: radial-gradient(circle at center, #102542 0%, #07111e 60%, #03070d 100%) fixed;
   color: #e2e8f0;
-}
-
-body {
-  background-color: #03060f;
-  color: #e2e8f0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Forzar color claro por defecto en encabezados y textos */
-h1, h2, h3, h4, h5, h6, p, span, div, a {
-  color: inherit;
+/* Títulos estilo fantasía medieval Mu (Cinzel + Dorado metálico) */
+h1, h2, h3, h4 {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: #fce893;
+  background: linear-gradient(180deg, #fff5c0 0%, #e5b33d 70%, #a67314 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.9));
+  letter-spacing: 0.05em;
 }
 
-/* Foco visible en todos los controles */
-:focus-visible {
-  outline: 2px solid #3ad6f0;
-  outline-offset: 2px;
+/* Subtítulos y textos de apoyo */
+p, span, li, button, input {
+  font-family: 'Inter', sans-serif;
 }
 
-/* Barra de scroll al tono del marco del juego */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #060c1c;
-}
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #26498a, #0a1428);
-  border: 1px solid #1c3766;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #3562ad, #16294d);
+/* Enlaces estilo cristal azul de Mu */
+a {
+  color: #51e2f5;
+  transition: all 0.2s ease;
 }
 
-::selection {
-  background: rgba(58, 214, 240, 0.28);
+a:hover {
   color: #ffffff;
+  text-shadow: 0 0 10px rgba(81, 226, 245, 0.8);
 }
 
-/* Marco biselado reutilizable */
+/* Marco metálico biselado estilo panel/inventario de Mu Online */
 .mu-frame {
   position: relative;
-  border: 1px solid #1c3766;
-  background-color: #060c1c;
+  background: linear-gradient(180deg, #122138 0%, #0a1424 100%);
+  border: 1px solid #3b5f8f;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
+/* Esquinas de adorno metálico dorado */
 .mu-frame::before,
 .mu-frame::after {
   content: '';
   position: absolute;
-  width: 10px;
-  height: 10px;
-  border-color: rgba(168, 182, 201, 0.45);
+  width: 8px;
+  height: 8px;
+  border-color: #e5b33d;
 }
 
 .mu-frame::before {
-  top: -1px;
-  left: -1px;
-  border-top: 1px solid;
-  border-left: 1px solid;
+  top: -2px;
+  left: -2px;
+  border-top: 2px solid;
+  border-left: 2px solid;
 }
 
 .mu-frame::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
+  bottom: -2px;
+  right: -2px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* Botones estilo UI base de Mu Online */
+button, .mu-button {
+  background: linear-gradient(180deg, #1d4373 0%, #0d223f 100%);
+  border: 1px solid #4a7bb0;
+  color: #ffffff !important;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease-in-out;
+}
+
+button:hover, .mu-button:hover {
+  background: linear-gradient(180deg, #285b9c 0%, #13335e 100%);
+  border-color: #fce893;
+  box-shadow: 0 0 12px rgba(81, 226, 245, 0.6);
+}
+
+/* Barra de scroll azul medieval */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #07111e;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2e517e, #112035);
+  border: 1px solid #4a7bb0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #3d68a0, #1b3150);
 }
