@@ -1,0 +1,22 @@
+{
+  "noticias": [
+    {
+      "titulo": "Apertura Oficial Season 6 EP3",
+      "descripcion": "El servidor ya se encuentra disponible",
+      "tag": "2026",
+      "color": "blue"
+    },
+    {
+      "titulo": "Sistema Honor & Helper Tokens",
+      "descripcion": "Ganá recompensas en batalla diariamente",
+      "tag": "Info",
+      "color": "amber"
+    }
+  ],
+  "links": {
+    "web": "https://mu-aethel.vercel.app/",
+    "discord": "https://discord.gg/tu-servidor",
+    "whatsapp": "https://chat.whatsapp.com/tu-grupo",
+    "instagram": "https://instagram.com/tu-usuario"
+  }
+}
