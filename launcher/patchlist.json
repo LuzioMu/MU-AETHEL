@@ -1,6 +1,6 @@
 {
   "version": "1.0.1",
-  "downloadUrl": "https://raw.githubusercontent.com/LuzioMu/MU-AETHEL/main/launcher/files",
+  "downloadUrl": "https://raw.githubusercontent.com/LuzioMu/MU-AETHEL/main/launcher/files/",
   "files": [
     {
       "path": "Data/Local/Common.bmd"
