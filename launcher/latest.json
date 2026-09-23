@@ -1,11 +1,11 @@
 {
-  "version": "0.1.0",
-  "notes": "Actualización de prueba con correcciones en el launcher.",
-  "pub_date": "2026-09-22T00:00:00Z",
+  "version": "v0.1.1",
+  "notes": "Actualización de interfaz a versión Carmesí/Rojo y correcciones de rendimiento.",
+  "pub_date": "2026-09-23T03:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZFp5dVllOWVySzFhQnJJeHZpSzBMYmZaVHp4c1VocGgvUDJZTUNYWjNIV24vM1Y0aEdXNVZxbDJENGpZRWJPTUJ6RkkwdkRSVGx6K2EyaXpRNnI0dXBLNUtGL0h5QWdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwMDQ3MDA5CWZpbGU6bXUtYWV0aGVsLWxhdW5jaGVyXzAuMS4xX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuMQp0TzJsOXhXMHpvZVpCZnZOSWlJeVRSRjNZNWd3YmxVT3RxUGZ2NXU2WHpleUNVKzhWLzlwWm0xUFU1T0dZQmxMVXhiMW1iZ2hCeUplUUZJbVZLY3hBQT09Cg==",
-      "url": "https://github.com/LuzioMu/MU-AETHEL/releases/download/v0.1.1/mu-aethel-launcher_0.1.1_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZFp5dVllOWVySzMyQWdEREhVL1RDR3Q2M0ZGQ0VQZ1hmZCtHMllEaEYrbmZMREZzY28xdWVJNkxuekhQZk5XUWNPWVlwbDUwaFJIa0t6Wll2VW51UzZDc3dxOSs1cVFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwMTQwNDg0CWZpbGU6TXUgQWV0aGVsXzAuMS4xX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuMQpTc3hDZHZraWxZZjNlTUdiZTFNRkZ3UXlWRDZaVnl3dlBVMVlrZzVCb05Ibm9Za1M5QTJRZDZBWThxUEN1WWR3allQWEFTalUxMmo1TG1iV1hVTndBQT09Cg==",
+      "url": "https://github.com/LuzioMu/MU-AETHEL/releases/download/v0.1.1/Mu.Aethel_0.1.1_x64-setup.exe"
     }
   }
 }
