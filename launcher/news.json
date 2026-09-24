@@ -5,13 +5,13 @@
         "titulo": "Inicio Oficial de Mu AETHEL",
         "descripcion": "Disfruten del proyecto, cualquier recomendación es bienvenida.",
         "tag": "Actualización",
-        "color": "amber"
+        "color": "cyan"
       },
       {
         "titulo": "Tokens de Helper y Honor",
         "descripcion": "Sistema de Tokens para obtener recompensas únicas",
         "tag": "No implementado aún",
-        "color": "amber"
+        "color": "cyan"
       }
     ],
     "en": [
@@ -19,13 +19,13 @@
         "titulo": "Mu AETHEL Official Start",
         "descripcion": "Enjoy this project, any recommendation is welcome.",
         "tag": "Update",
-        "color": "amber"
+        "color": "cyan"
       },
       {
         "titulo": "Helper and Honor Tokens",
         "descripcion": "Token System to earn unique rewards",
         "tag": "Not implemented yet",
-        "color": "amber"
+        "color": "cyan"
       }
     ],
     "pt": [
@@ -33,13 +33,13 @@
         "titulo": "Início Oficial do Mu AETHEL",
         "descripcion": "Aproveite este projeto, toda recomendação é bem-vinda.",
         "tag": "Atualização",
-        "color": "amber"
+        "color": "cyan"
       },
       {
         "titulo": "Tokens de Helper e Honra",
         "descripcion": "Sistema de Tokens para obter recompensas únicas",
         "tag": "Ainda não implementado",
-        "color": "amber"
+        "color": "cyan"
       }
     ]
   },
