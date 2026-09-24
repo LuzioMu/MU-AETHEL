@@ -1,11 +1,11 @@
 {
-  "version": "v0.1.0",
+  "version": "v0.1.2",
   "notes": "First MU AETHEL Official Launcher made by Luzio",
   "pub_date": "2026-09-23T12:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZFp5dVllOWVySy9paG1qSnFheTRCbjFkSVdwUkV3aFdhTndoYWV0cFhCd0g2NGpkcUJESzQwR0E4Z1RFZ1dkYkJma3NZVis2Y2lQVloraUNWS2R2SVFsSlNONHhUUVFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwMTg0NzU1CWZpbGU6TXUgQWV0aGVsXzAuMS4wX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuMApzaTRtSDltUVF6WFNXbENPdXM0dTAxckxGWmVGRC8vZnRmUkFEeGxoUEh5a0tyYXJaTEhvejd3YitLbE9jZUpFZWNETFFWK3lFTWRPWm95cWhRN2NEUT09Cg==",
-      "url": "https://github.com/LuzioMu/MU-AETHEL/releases/download/v0.1.0/Mu.Aethel_0.1.0_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZFp5dVllOWVyS3dxOFV0c3VTUmpLNWRNRlk3bEpUUTI4M2xDelF4cG53dlFMckVNZjJVTDBIRWdQa3pmTmVFc0NBdS9DNFpJcHZPVU5NKzJBUmNFNHo0RElDVWtHM0E4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwMjE4MDQ4CWZpbGU6TXUgQWV0aGVsXzAuMS4yX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuMgphdUszczVicVIySDA0YUF6blFRSnRZWVpMakFlL0Iyc0NJV1RPaUVFZkx0VVJ0UExkcm1PMTllNDRZdHRyZXcvbWpHcDBiaWk1NlZOTVBNN1I0T0tEQT09Cg==",
+      "url": "https://github.com/LuzioMu/MU-AETHEL/releases/download/v0.1.2/Mu.Aethel_0.1.2_x64-setup.exe"
     }
   }
 }
