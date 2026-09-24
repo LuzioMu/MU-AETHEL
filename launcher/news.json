@@ -2,25 +2,43 @@
   "noticias": {
     "es": [
       {
-        "titulo": "Inicio Oficial de Mu Aethel",
-        "descripcion": "Disfruten del proyecto, cualquier sugerencia es bienvenida.",
+        "titulo": "Inicio Oficial de Mu AETHEL",
+        "descripcion": "Disfruten del proyecto, cualquier recomendación es bienvenida.",
         "tag": "24/09/2026",
+        "color": "amber"
+      },
+      {
+        "titulo": "Tokens de Helper y Honor",
+        "descripcion": "Sistema de Tokens para obtener recompensas únicas",
+        "tag": "No implementado aún",
         "color": "amber"
       }
     ],
     "en": [
       {
-        "titulo": "Mu Aethel Official Start",
-        "descripcion": "Enjoy this project, any help is welcome.",
+        "titulo": "Mu AETHEL Official Start",
+        "descripcion": "Enjoy this project, any recommendation is welcome.",
         "tag": "24/09/2026",
+        "color": "amber"
+      },
+      {
+        "titulo": "Helper and Honor Tokens",
+        "descripcion": "Token System to earn unique rewards",
+        "tag": "Not implemented yet",
         "color": "amber"
       }
     ],
     "pt": [
       {
-        "titulo": "Início Oficial do Mu Aethel",
-        "descripcion": "Aproveite este projeto, toda ajuda é bem-vinda.",
+        "titulo": "Início Oficial do Mu AETHEL",
+        "descripcion": "Aproveite este projeto, toda recomendação é bem-vinda.",
         "tag": "24/09/2026",
+        "color": "amber"
+      },
+      {
+        "titulo": "Tokens de Helper e Honra",
+        "descripcion": "Sistema de Tokens para obter recompensas únicas",
+        "tag": "Ainda não implementado",
         "color": "amber"
       }
     ]
