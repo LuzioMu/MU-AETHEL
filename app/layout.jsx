@@ -7,7 +7,7 @@ import './globals.css';
 export const metadata = {
   title: 'Mu Aethel - Season 6',
   description:
-    'Servidor privado de MU Online Season 6. Sin VIP y sin ventajas pagas: todo el equipamiento se gana jugando.',
+    'MU Aethel - Season 6 Server. No VIP y No paid advantages. NO PAY-TO-WIN.',
 };
 
 export default function RootLayout({ children }) {
