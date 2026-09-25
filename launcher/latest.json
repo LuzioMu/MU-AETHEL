@@ -1,11 +1,11 @@
 {
-  "version": "v0.1.3",
-  "notes": "Actualización v0.1.3: Rediseño visual a temática Rojo Oscuro y Dorado, corrección de rutas locales y mejoras de estabilidad.",
-  "pub_date": "2026-09-24T15:00:00Z",
+  "version": "0.1.5",
+  "notes": "Nueva Actualización horrible",
+  "pub_date": "2026-09-24T22:50:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZFp5dVllOWVySyt1dVUxK1NwZDkvYTN5c250YSsxZ2Uxd0g2Y3dRbmhOZXRBRlNUdEJHaHp3a2g1Ky9oUTlkaUVwemp6a1NEcVVBRG9rVVdnRU9ZempKNGtxVDNFUGdnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwMjczNzcyCWZpbGU6TXUgQWV0aGVsXzAuMS4zX3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuMwpTaXJsVXFSUm9jTFdScG1ZaFliOG9sSy94eWh2ajRucG4vaHNUZHB4YlBCNEpWemRDc3FoOWtieW1xVWtwczBCSW5Ed0djUVJHQldObXloa1BXUldEUT09Cg==",
-      "url": "https://github.com/LuzioMu/MU-AETHEL/releases/download/v0.1.3/Mu.Aethel_0.1.3_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZFp5dVllOWVySzlKZUZrRXNsNkNlWnhNaWt0UU5oZ0Z3bXlIQnB1d2M4RWFyZ0QvVTJwMW5LUlc0SzFmcTZtT20wS3BhV1I5VEJwQndDZTNtN1B1UkN0Y1hrSVdwenc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwMzAwODA4CWZpbGU6TXUgQWV0aGVsXzAuMS41X3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuNQpUTkxSditPMFVPeDAwTVVEOGFxNXhtblhScUFON09RZHNqeUtQcTcwbGhhMmVtYmZCSUIvREZvVXNwQWI1SHlZWHlVMjU3SlZtaTBUeXhGTS9WeE5BQT09Cg==",
+      "url": "https://github.com/LuzioMu/MU-AETHEL/releases/download/v0.1.5/Mu.Aethel_0.1.5_x64-setup.exe"
     }
   }
 }
