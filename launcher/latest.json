@@ -1,11 +1,11 @@
 {
-  "version": "0.1.5",
-  "notes": "Nueva Actualización horrible",
+  "version": "0.1.6",
+  "notes": "Nueva Actualización Horrible",
   "pub_date": "2026-09-24T22:50:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZFp5dVllOWVySzlKZUZrRXNsNkNlWnhNaWt0UU5oZ0Z3bXlIQnB1d2M4RWFyZ0QvVTJwMW5LUlc0SzFmcTZtT20wS3BhV1I5VEJwQndDZTNtN1B1UkN0Y1hrSVdwenc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwMzAwODA4CWZpbGU6TXUgQWV0aGVsXzAuMS41X3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuNQpUTkxSditPMFVPeDAwTVVEOGFxNXhtblhScUFON09RZHNqeUtQcTcwbGhhMmVtYmZCSUIvREZvVXNwQWI1SHlZWHlVMjU3SlZtaTBUeXhGTS9WeE5BQT09Cg==",
-      "url": "https://github.com/LuzioMu/MU-AETHEL/releases/download/v0.1.5/Mu.Aethel_0.1.5_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZFp5dVllOWVySytFRitWRzlDWldLTW5nWXVNUC9IMEh4QlNtcnR2SjcyZXRGaXdDREVQZnNSRFZ0ODEvUmNuaVFTYm1UaTlOdkNqVnJmNTJSTU9zSmU0QlFaZVllTWc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkwMzAyNjk1CWZpbGU6TXUgQWV0aGVsXzAuMS42X3g2NC1zZXR1cC5leGUJdmVyc2lvbjowLjEuNgpmTndEdDVoYVV3bTM5d3d5RDRGUmZhbU0xKzdiamNQakkyNWRZN255L0JNeFpNRk85SlpXd2hDdEtjK2FlT05TbXlteVlkSnBleS84VGV2ZnFmMFpBZz09Cg==",
+      "url": "https://github.com/LuzioMu/MU-AETHEL/releases/download/v0.1.6/Mu.Aethel_0.1.6_x64-setup.exe"
     }
   }
 }
