@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "launcherVersion": "1.0.0",
+  "launcherUrl": "https://github.com/LuzioMu/MU-AETHEL/releases/download/v1.0.0/Mu_Aethel_Launcher.exe",
+  "news": [
+    {
+      "id": 1,
+      "title": "Inicio Oficial de Mu AETHEL",
+      "description": "Disfruten del proyecto, cualquier recomendación es bienvenida.",
+      "tag": "Actualización",
+      "date": "2026-09-27"
+    },
+    {
+      "id": 2,
+      "title": "Tokens de Helper y Honor",
+      "description": "Sistema de Tokens para obtener recompensas únicas.",
+      "tag": "Novedad",
+      "date": "2026-09-27"
+    }
+  ],
+  "patches": [
+    {
+      "name": "Data/Local/Eng/Message_eng.bmd",
+      "url": "https://raw.githubusercontent.com/LuzioMu/MU-AETHEL/main/patches/Message_eng.bmd"
+    }
+  ]
+}
