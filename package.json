@@ -5,14 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "tauri": "tauri"
   },
   "dependencies": {
+    "@tauri-apps/api": "^2.0.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
     "@tailwindcss/postcss": "latest",
     "tailwindcss": "latest",
     "postcss": "latest"
