@@ -26,7 +26,12 @@ function Hero() {
 
   return (
     <section id="inicio" className="relative scroll-mt-24 overflow-hidden min-h-[70vh] flex items-center justify-center bg-[#050a12]">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(24,37,56,0.8),rgba(5,10,18,1))]" />
+      
+      {/* 1. IMAGEN DE FONDO */}
+      <div className="absolute inset-0 bg-[url('/background.jpg')] bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity" />
+      
+      {/* 2. DEGRADADOS Y EFECTOS ORIGINALES */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(24,37,56,0.8),rgba(5,10,18,0.95))]" />
       <div className="absolute left-1/2 top-10 h-[350px] w-[500px] -translate-x-1/2 rounded-full bg-[#51e2f5]/10 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-4 py-12 text-center sm:px-6 lg:py-16 flex flex-col items-center">
