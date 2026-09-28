@@ -55,17 +55,33 @@ function Hero() {
           {t('hero.claim')}
         </p>
 
-        {/* BADGES REDISEÑADOS (Celeste, Rojo/Negro, Dorado) */}
+{/* BADGES REDISEÑADOS */}
         <div className="mt-8 flex flex-wrap justify-center gap-3 sm:gap-4 text-xs font-bold">
-          <span className="px-4 py-2 rounded bg-[#0a182e]/80 border border-[#51e2f5]/50 text-[#51e2f5] tracking-wider shadow-[0_0_10px_rgba(81,226,245,0.1)]">
-            {t('hero.badge1')}
+          <span className="px-4 py-2 rounded bg-[#0a182e]/90 border border-[#51e2f5]/50 text-[#51e2f5] tracking-wider shadow-[0_0_10px_rgba(81,226,245,0.1)]">
+            ⚔️ Play-to-Earn
           </span>
-          <span className="px-4 py-2 rounded bg-black/80 border border-red-500/60 text-red-400 tracking-wider shadow-[0_0_10px_rgba(239,68,68,0.15)]">
-            {t('hero.badge2')}
+          <span className="px-4 py-2 rounded bg-black/90 border border-red-500/60 text-red-400 tracking-wider shadow-[0_0_10px_rgba(239,68,68,0.15)]">
+            🚫 No VIP
           </span>
-          <span className="px-4 py-2 rounded bg-[#1a1508]/80 border border-[#fce893]/60 text-[#fce893] tracking-wider shadow-[0_0_10px_rgba(252,232,147,0.1)]">
-            {t('hero.badge3')}
+          <span className="px-4 py-2 rounded bg-[#1a1508]/90 border border-[#fce893]/60 text-[#fce893] tracking-wider shadow-[0_0_10px_rgba(252,232,147,0.1)]">
+            🗓️ Events every Week
           </span>
+        </div>
+
+        {/* BOTONES PRINCIPALES */}
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <a
+            href="#descargas"
+            className="px-8 py-3 rounded bg-gradient-to-r from-[#cba135] to-[#fce893] text-[#050a12] font-black tracking-wide shadow-[0_0_15px_rgba(252,232,147,0.6)] hover:scale-105 transition-transform"
+          >
+            {t('hero.ctaPrimary') || 'Descargar Cliente'}
+          </a>
+          <a
+            href="#economia"
+            className="px-8 py-3 rounded bg-[#0a182e]/90 border border-[#51e2f5]/40 text-[#51e2f5] font-bold tracking-wide hover:bg-[#51e2f5]/10 hover:border-[#51e2f5] hover:scale-105 transition-all"
+          >
+            {t('hero.ctaSecondary') || 'Ver Economía'}
+          </a>
         </div>
 
         {/* BOTONES PRINCIPALES */}
