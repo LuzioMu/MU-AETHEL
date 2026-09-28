@@ -74,29 +74,7 @@ function Hero() {
             href="#descargas"
             className="px-8 py-3 rounded bg-gradient-to-r from-[#cba135] to-[#fce893] text-[#050a12] font-black tracking-wide shadow-[0_0_15px_rgba(252,232,147,0.6)] hover:scale-105 transition-transform"
           >
-            {t('hero.ctaPrimary') || 'Descargar Cliente'}
-          </a>
-          <a
-            href="#economia"
-            className="px-8 py-3 rounded bg-[#0a182e]/90 border border-[#51e2f5]/40 text-[#51e2f5] font-bold tracking-wide hover:bg-[#51e2f5]/10 hover:border-[#51e2f5] hover:scale-105 transition-all"
-          >
-            {t('hero.ctaSecondary') || 'Ver Economía'}
-          </a>
-        </div>
-
-        {/* BOTONES PRINCIPALES */}
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <a
-            href="#descargas"
-            className="px-8 py-3 rounded bg-gradient-to-r from-[#cba135] to-[#fce893] text-black font-bold tracking-wide shadow-[0_0_15px_rgba(252,232,147,0.4)] hover:scale-105 transition-transform"
-          >
-            {t('hero.ctaPrimary')}
-          </a>
-          <a
-            href="#economia"
-            className="px-8 py-3 rounded bg-[#0a182e]/80 border border-[#51e2f5]/40 text-[#51e2f5] font-bold tracking-wide hover:bg-[#51e2f5]/10 hover:border-[#51e2f5] hover:scale-105 transition-all"
-          >
-            {t('hero.ctaSecondary')}
+            Descargar Cliente Oficial
           </a>
         </div>
 
