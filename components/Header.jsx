@@ -7,9 +7,9 @@
 import { useI18n } from '../lib/i18n';
 
 const languages = [
-  { code: 'es', label: 'ES' },
-  { code: 'en', label: 'EN' },
-  { code: 'pt', label: 'PT' },
+  { code: 'es', label: '🇪🇸' },
+  { code: 'en', label: '🇺🇸' },
+  { code: 'pt', label: '🇧🇷' },
 ];
 
 export default function Header() {
