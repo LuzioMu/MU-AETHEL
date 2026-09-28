@@ -53,19 +53,20 @@ export default function Header() {
 
           <div className="hidden md:block w-px h-5 bg-slate-700"></div> {/* Separador */}
 
-          {/* SELECTOR DE IDIOMA ELEGANTE */}
-          <div className="flex items-center gap-2 text-xs font-bold tracking-wider">
+{/* SELECTOR DE IDIOMA ELEGANTE */}
+          <div className="flex items-center gap-3 text-lg font-bold tracking-wider">
             {languages.map((l, index) => {
               const active = l.code === lang;
               return (
-                <div key={l.code} className="flex items-center gap-2">
+                <div key={l.code} className="flex items-center gap-3">
                   <button
                     onClick={() => setLang(l.code)}
-                    className={`transition-colors ${active ? 'text-[#51e2f5]' : 'text-slate-500 hover:text-slate-300'}`}
+                    className={`transition-colors hover:scale-110 ${active ? 'opacity-100 drop-shadow-[0_0_8px_rgba(81,226,245,0.8)]' : 'opacity-50 hover:opacity-80'}`}
+                    title={l.code.toUpperCase()}
                   >
                     {l.label}
                   </button>
-                  {index < languages.length - 1 && <span className="text-slate-700">|</span>}
+                  {index < languages.length - 1 && <span className="text-slate-700 text-sm">|</span>}
                 </div>
               );
             })}
