@@ -37,7 +37,10 @@ function Hero() {
         </p>
 
         {/* TÍTULO PRINCIPAL EN DORADO */}
-        <h1 className="mt-3 text-6xl sm:text-8xl font-display font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#fff3b0] via-[#fce893] to-[#cba135] drop-shadow-[0_4px_12px_rgba(252,232,147,0.3)]">
+        <h1 
+          className="mt-3 text-6xl sm:text-8xl font-display font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#fff3b0] via-[#fce893] to-[#cba135] drop-shadow-[0_4px_12px_rgba(252,232,147,0.3)]"
+          style={{ fontFamily: "'Cinzel', serif" }}
+        >
           {t('hero.title')}
         </h1>
 
@@ -128,7 +131,12 @@ function ServerFeatures() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center mb-12">
           <p className="font-data text-xs tracking-[0.2em] text-[#51e2f5] uppercase">{t('features.subtitle') || 'Novedades de Mu Aethel'}</p>
-          <h2 className="text-3xl sm:text-4xl mt-2">{t('features.mainTitle') || 'Modificaciones & Características'}</h2>
+          <h2 
+            className="text-3xl sm:text-4xl mt-2 text-slate-200"
+            style={{ fontFamily: "'Cinzel', serif" }}
+          >
+            {t('features.mainTitle') || 'Modificaciones & Características'}
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -141,7 +149,12 @@ function ServerFeatures() {
                     {item.tag}
                   </span>
                 </div>
-                <h3 className="text-xl text-[#fce893] mb-2">{item.title}</h3>
+                <h3 
+                  className="text-xl text-[#fce893] mb-2"
+                  style={{ fontFamily: "'Cinzel', serif" }}
+                >
+                  {item.title}
+                </h3>
                 <p className="text-xs text-slate-300 leading-relaxed">{item.desc}</p>
               </div>
             </div>
