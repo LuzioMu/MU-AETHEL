@@ -1,24 +1,10 @@
 {
   "version": "1.0.1",
-  "downloadUrl": "https://raw.githubusercontent.com/LuzioMu/MU-AETHEL/main/launcher/files/",
+  "downloadUrl": "https://raw.githubusercontent.com/LuzioMu/MU-AETHEL/main/launcher/parches/",
   "files": [
     {
-      "path": "Data/Local/Common.bmd"
-    },
-    {
-      "path": "Data/Local/Custom.bmd"
-    },
-    {
-      "path": "Data/Local/Effects.bmd"
-    },
-    {
-      "path": "Data/Local/Items.bmd"
-    },
-    {
-      "path": "Data/Local/Pets.bmd"
-    },
-    {
-      "path": "Data/Local/Server.bmd"
+      "path": "main.premium",
+      "hash": "1"
     }
   ]
 }
