@@ -32,7 +32,7 @@ export default function Header() {
           </div>
         </a>
 
-        {/* NAVEGACIÓN CENTRAL (Bien espaciada) */}
+        {/* NAVEGACIÓN CENTRAL */}
         <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide flex-1 justify-center">
           <a href="#inicio" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('nav.home') || 'Inicio'}</a>
           <a href="#noticias" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('nav.news') || 'Noticias'}</a>
@@ -53,7 +53,7 @@ export default function Header() {
 
           <div className="hidden md:block w-px h-5 bg-slate-700"></div> {/* Separador */}
 
-{/* SELECTOR DE IDIOMA ELEGANTE */}
+          {/* SELECTOR DE IDIOMA CON BANDERA PROTEGIDA */}
           <div className="flex items-center gap-3 text-lg font-bold tracking-wider">
             {languages.map((l, index) => {
               const active = l.code === lang;
@@ -61,16 +61,19 @@ export default function Header() {
                 <div key={l.code} className="flex items-center gap-3">
                   <button
                     onClick={() => setLang(l.code)}
-                    className={`transition-colors hover:scale-110 ${active ? 'opacity-100 drop-shadow-[0_0_8px_rgba(81,226,245,0.8)]' : 'opacity-50 hover:opacity-80'}`}
+                    className={`transition-all hover:scale-125 ${
+                      active ? 'opacity-100 scale-110 drop-shadow-[0_0_8px_rgba(81,226,245,0.8)]' : 'opacity-40 hover:opacity-80'
+                    }`}
                     title={l.code.toUpperCase()}
                   >
-                    {l.label}
+                    <span className="font-sans inline-block select-none">{l.label}</span>
                   </button>
-                  {index < languages.length - 1 && <span className="text-slate-700 text-sm">|</span>}
+                  {index < languages.length - 1 && <span className="text-slate-700 text-sm font-sans">|</span>}
                 </div>
               );
             })}
           </div>
+
         </div>
       </div>
     </header>
