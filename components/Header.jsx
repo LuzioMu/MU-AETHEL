@@ -6,10 +6,35 @@
 
 import { useI18n } from '../lib/i18n';
 
+// Banderas SVG nativas (Ndodependéi emoji Windows pegua rehe)
+const FLAGS = {
+  es: (
+    <svg className="w-5 h-3.5 rounded-sm overflow-hidden inline-block" viewBox="0 0 640 480">
+      <path fill="#c1311b" d="M0 0h640v480H0z"/>
+      <path fill="#f1bf00" d="M0 120h640v240H0z"/>
+    </svg>
+  ),
+  en: (
+    <svg className="w-5 h-3.5 rounded-sm overflow-hidden inline-block" viewBox="0 0 640 480">
+      <path fill="#012169" d="M0 0h640v480H0z"/>
+      <path fill="#FFF" d="m67 0 253 189L573 0h67v50L387 240l253 190v50h-67L320 291 67 480H0v-50l253-190L0 50V0h67z"/>
+      <path fill="#C8102E" d="M247 0v480h146V0H247zM0 167v146h640V167H0z"/>
+      <path fill="#C8102E" d="m0 0 213 160h67L0 10V0zm573 0L360 160h67L640 10V0h-67zM0 480l213-160h-67L0 470v10zm640 0L427 320h-67l213 150v10h67z"/>
+    </svg>
+  ),
+  pt: (
+    <svg className="w-5 h-3.5 rounded-sm overflow-hidden inline-block" viewBox="0 0 640 480">
+      <path fill="#009c3b" d="M0 0h640v480H0z"/>
+      <path fill="#ffdf00" d="M320 40 600 240 320 440 40 240z"/>
+      <circle fill="#002776" cx="320" cy="240" r="105"/>
+    </svg>
+  )
+};
+
 const languages = [
-  { code: 'es', label: '🇪🇸' },
-  { code: 'en', label: '🇺🇸' },
-  { code: 'pt', label: '🇧🇷' },
+  { code: 'es', label: 'ES' },
+  { code: 'en', label: 'EN' },
+  { code: 'pt', label: 'PT' },
 ];
 
 export default function Header() {
@@ -51,24 +76,25 @@ export default function Header() {
             </a>
           </div>
 
-          <div className="hidden md:block w-px h-5 bg-slate-700"></div> {/* Separador */}
+          <div className="hidden md:block w-px h-5 bg-slate-700"></div>
 
-          {/* SELECTOR DE IDIOMA CON BANDERA PROTEGIDA */}
-          <div className="flex items-center gap-3 text-lg font-bold tracking-wider">
+          {/* SELECTOR DE IDIOMA CON BANDERAS SVG */}
+          <div className="flex items-center gap-3">
             {languages.map((l, index) => {
               const active = l.code === lang;
               return (
                 <div key={l.code} className="flex items-center gap-3">
                   <button
                     onClick={() => setLang(l.code)}
-                    className={`transition-all hover:scale-125 ${
-                      active ? 'opacity-100 scale-110 drop-shadow-[0_0_8px_rgba(81,226,245,0.8)]' : 'opacity-40 hover:opacity-80'
+                    className={`flex items-center gap-1.5 transition-all hover:scale-110 ${
+                      active ? 'opacity-100 scale-105 drop-shadow-[0_0_8px_rgba(81,226,245,0.8)]' : 'opacity-40 hover:opacity-80'
                     }`}
                     title={l.code.toUpperCase()}
                   >
-                    <span className="font-sans inline-block select-none">{l.label}</span>
+                    {FLAGS[l.code]}
+                    <span className="text-xs font-bold text-slate-300">{l.label}</span>
                   </button>
-                  {index < languages.length - 1 && <span className="text-slate-700 text-sm font-sans">|</span>}
+                  {index < languages.length - 1 && <span className="text-slate-700 text-xs">|</span>}
                 </div>
               );
             })}
