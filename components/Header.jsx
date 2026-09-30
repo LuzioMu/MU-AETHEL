@@ -1,12 +1,12 @@
 'use client';
 
 // =========================================================================
-// MU AETHEL - Encabezado / Navegación (Rediseño 2026)
+// MU AETHEL - Encabezado / Navegación (Links Globales Arreglados)
 // =========================================================================
 
 import { useI18n } from '../lib/i18n';
 
-// Banderas SVG nativas (Carga garantizada en cualquier dispositivo)
+// Banderas SVG nativas
 const FLAGS = {
   es: (
     <svg className="w-5 h-3.5 rounded-sm overflow-hidden inline-block shrink-0" viewBox="0 0 640 480">
@@ -53,25 +53,24 @@ export default function Header() {
       <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 py-3 sm:px-6">
         
         {/* LADO IZQUIERDO: LOGO Y NOMBRE */}
-        <a href="#inicio" className="flex items-center gap-3 shrink-0">
+        <a href="/#inicio" className="flex items-center gap-3 shrink-0">
           <img src="/logo.png" alt="Mu Aethel" className="w-12 h-12 object-contain drop-shadow-[0_0_8px_rgba(252,232,147,0.3)] hover:scale-105 transition-transform" />
           <span className="text-2xl font-black tracking-widest text-[#fce893] drop-shadow-md hidden sm:block" style={{ fontFamily: "'Cinzel', serif" }}>
             Mu Aethel
           </span>
         </a>
 
-        {/* CENTRO: NAVEGACIÓN */}
+        {/* CENTRO: NAVEGACIÓN CON RUTAS ABSOLUTAS (/#) */}
         <nav className="hidden lg:flex items-center gap-8 text-[15px] font-bold tracking-wider mx-auto">
-          <a href="#inicio" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.home') || 'Inicio'}</a>
-          <a href="#noticias" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.news') || 'Noticias'}</a>
-          <a href="#economia" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.economy') || 'Economía'}</a>
-          <a href="#descargas" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.downloads') || 'Descargas'}</a>
+          <a href="/#inicio" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.home') || 'Inicio'}</a>
+          <a href="/#noticias" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.news') || 'Noticias'}</a>
+          <a href="/#economia" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.economy') || 'Economía'}</a>
+          <a href="/#descargas" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.downloads') || 'Descargas'}</a>
         </nav>
 
         {/* LADO DERECHO: BANDERAS Y CUENTA */}
         <div className="flex items-center gap-6 shrink-0">
           
-          {/* Selector de Idiomas Visual (Sólo las banderas) */}
           <div className="flex items-center gap-2">
             {languages.map((l) => (
               <button
@@ -89,16 +88,14 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Botón de Crear Cuenta (Estilo Dorado) */}
           <a 
-            href="#registro" 
+            href="/#registro" 
             className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#fce893] to-[#cba135] border border-[#fff3b0] text-[#050a12] font-black text-sm tracking-wide shadow-[0_0_15px_rgba(203,161,53,0.4)] hover:shadow-[0_0_20px_rgba(252,232,147,0.7)] hover:scale-105 transition-all"
           >
             Crear Cuenta
           </a>
           
-          {/* Botón de Login Textual */}
-          <a href="#login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">
+          <a href="/#login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">
             Ingresar
           </a>
         </div>
