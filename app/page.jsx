@@ -203,13 +203,33 @@ function LiveRankings() {
   );
 }
 
-function DropGuide() {
-  const drops = [
-    { item: 'Jewel of Bless / Soul', map: 'General (Cualquier mapa)', mobs: 'Monstruos de Nivel 25+' },
-    { item: 'Cajas Kundun +1 a +5', map: 'Invasiones de Dorados', mobs: 'Golden Goblins, Titans, Dragons, etc.' },
-    { item: 'Items Excellent 380', map: 'Kanturu Relics / Kalima 7', mobs: 'Maya, Nightmare, Kundun' },
-    { item: 'Materiales para Alas S3', map: 'Barracks / Refuge', mobs: 'Balram, Death Spirit, Soram' },
-  ];
+function DropGuideBanner() {
+  return (
+    <section className="relative z-10 py-16 bg-[#0a111c] border-y border-[#102542] flex items-center justify-center">
+      {/* Luces de fondo sutiles */}
+      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 h-[200px] w-[300px] rounded-full bg-[#fce893]/5 blur-[80px] pointer-events-none" />
+      
+      <div className="relative mx-auto max-w-4xl px-4 text-center">
+        <p className="font-data text-xs tracking-[0.3em] text-[#51e2f5] uppercase font-bold mb-3">
+          Todo el conocimiento en un solo lugar
+        </p>
+        <h2 className="text-4xl sm:text-5xl text-white drop-shadow-md mb-6" style={{ fontFamily: "'Cinzel', serif" }}>
+          La Gran Biblioteca de Aethel
+        </h2>
+        <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+          ¿No sabés dónde cae la Jewel of Bless? ¿Querés armar tus Alas nivel 3 y te faltan materiales? Ingresá a nuestra Wiki oficial para ver todos los mapas, spots, niveles de monstruos y recompensas de los Jefes.
+        </p>
+        
+        <a 
+          href="/guia" 
+          className="inline-block px-8 py-3 rounded border border-[#fce893] text-[#fce893] hover:bg-[#fce893] hover:text-[#050a12] font-black tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(252,232,147,0.1)] hover:shadow-[0_0_20px_rgba(252,232,147,0.4)]"
+        >
+          📖 Leer Guía Completa de Drops
+        </a>
+      </div>
+    </section>
+  );
+}
 
   return (
     <section className="relative z-10 py-16 bg-[#080d17]/95 border-b border-slate-800/80">
