@@ -1,7 +1,7 @@
 'use client';
 
 // ============================================================================
-//  MU AETHEL - Página principal (Rediseñada)
+//  MU AETHEL - Página principal (Solucionada)
 // ============================================================================
 
 import { I18nProvider, useI18n } from '../lib/i18n';
@@ -12,7 +12,6 @@ import EventTimers from '../components/EventTimers';
 import TokenEconomy from '../components/TokenEconomy';
 import DownloadCenter from '../components/DownloadCenter';
 import Footer from '../components/Footer';
-// Nota: NewsFeed fue removido de aquí para ir a su propia ruta (/noticias)
 
 function Hero() {
   const { t } = useI18n();
@@ -206,7 +205,6 @@ function LiveRankings() {
 function DropGuideBanner() {
   return (
     <section className="relative z-10 py-16 bg-[#0a111c] border-y border-[#102542] flex items-center justify-center">
-      {/* Luces de fondo sutiles */}
       <div className="absolute left-1/4 top-1/2 -translate-y-1/2 h-[200px] w-[300px] rounded-full bg-[#fce893]/5 blur-[80px] pointer-events-none" />
       
       <div className="relative mx-auto max-w-4xl px-4 text-center">
@@ -231,38 +229,6 @@ function DropGuideBanner() {
   );
 }
 
-  return (
-    <section className="relative z-10 py-16 bg-[#080d17]/95 border-b border-slate-800/80">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl text-[#fce893]" style={{ fontFamily: "'Cinzel', serif" }}>Guía de Drops & Spots</h2>
-          <p className="font-data text-xs tracking-widest text-slate-400 mt-2">ENCUENTRA LOS MEJORES OBJETOS DEL JUEGO</p>
-        </div>
-        <div className="mu-frame bg-[#0a111c] rounded overflow-hidden shadow-2xl">
-          <table className="w-full text-left text-sm text-slate-300">
-            <thead className="bg-[#102542] text-[#51e2f5] uppercase text-xs font-bold tracking-wider">
-              <tr>
-                <th className="px-6 py-4">Item Destacado</th>
-                <th className="px-6 py-4">Mapa / Evento</th>
-                <th className="px-6 py-4">Monstruos / Jefes</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800/80">
-              {drops.map((d, idx) => (
-                <tr key={idx} className="hover:bg-[#0a182e]/50 transition-colors">
-                  <td className="px-6 py-4 font-semibold text-[#fce893]">{d.item}</td>
-                  <td className="px-6 py-4">{d.map}</td>
-                  <td className="px-6 py-4 font-mono text-xs text-slate-400">{d.mobs}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export default function HomePage() {
   return (
     <I18nProvider initialLang="es">
@@ -274,7 +240,7 @@ export default function HomePage() {
           <CastleSiegeBanner />
           <LiveRankings />
           <EventTimers />
-          <DropGuide />
+          <DropGuideBanner />
           <TokenEconomy />
           <DownloadCenter />
         </main>
