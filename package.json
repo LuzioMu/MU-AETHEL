@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "mssql": "^12.7.2",
     "next": "latest",
     "react": "latest",
