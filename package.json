@@ -1,23 +1,22 @@
 {
   "name": "mu-aethel",
-  "version": "1.0.1",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "tauri": "tauri"
+    "start": "next start"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.0.0",
+    "mssql": "^12.7.2",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "resend": "^6.31.0"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.0.0",
-    "@tailwindcss/postcss": "latest",
-    "tailwindcss": "latest",
-    "postcss": "latest"
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest"
   }
 }
