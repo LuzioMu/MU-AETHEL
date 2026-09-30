@@ -1,7 +1,7 @@
 'use client';
 
 // ============================================================================
-//  MU AETHEL - Sistema de Traducciones (i18n)
+//  MU AETHEL - Sistema de Traducciones (i18n) + Base de Datos de Guías
 // ============================================================================
 
 import React, { createContext, useContext, useState } from 'react';
@@ -126,6 +126,41 @@ const translations = {
       privacy: 'Política de Privacidad',
       rights: 'Todos los derechos reservados.',
       disclaimer: 'Mu Online es una marca registrada de Webzen Inc.',
+    },
+    guia: {
+      pageTag: 'La Biblioteca del Reino',
+      pageTitle: 'Guía Oficial de Drops & Spots',
+      pageDesc: 'Todo el conocimiento de Mu Aethel en un solo lugar. Descubre qué monstruos cazar, en qué zonas entrenar y dónde conseguir los objetos más codiciados del servidor.',
+      table1Title: '🗺️ Zonas de Leveo Básicas y Medias',
+      table2Title: '🌋 Zonas Peligrosas (End-Game)',
+      table3Title: '👹 Invasiones y Jefes Mundiales (World Bosses)',
+      colMap: 'Mapa',
+      colLvl: 'Rango Nivel',
+      colMobs: 'Monstruos Destacados',
+      colDrop: 'Drop Principal',
+      colTime: 'Aparición',
+      colGuaranteed: 'Botín Asegurado:',
+      zonasBase: [
+        { map: "Lorencia / Noria / Elbeland", mobs: "Spiders, Goblins, Lich, Mutans", lvl: "1 - 30", drop: "Items Básicos, Scroll of Fireball, Heal, Zen" },
+        { map: "Devias (1, 2, 3)", mobs: "Elite Yeti, Assassin, Ice Queen", lvl: "30 - 60", drop: "Items tier 2, Horn of Uniria, Jewel of Chaos" },
+        { map: "Dungeon (1, 2, 3)", mobs: "Skeleton, Poison Bull, Gorgon", lvl: "40 - 70", drop: "Jewel of Bless, Armas +3 / +4, Poison Ring" },
+        { map: "Atlans (1, 2, 3)", mobs: "Bahamut, Vepar, Hydra", lvl: "70 - 100", drop: "Jewel of Soul, Armas Aquáticas, Cajas Ribbon" },
+        { map: "Lost Tower (1 al 7)", mobs: "Shadow, Poison Knight, Balrog", lvl: "80 - 120", drop: "Jewel of Bless, Jewel of Soul, Items +5, Scroll of Twisting Slash" }
+      ],
+      zonasAltas: [
+        { map: "Tarkan (1, 2)", mobs: "Mutant, Iron Wheel, Zaikan", lvl: "130 - 180", drop: "Items Excelentes bajos, Jewel of Life" },
+        { map: "Icarus", mobs: "Alquamos, Mega Crust, Dark Phoenix", lvl: "170 - 230", drop: "Plumas (Loch's Feather), Crest of Monarch, Items Excelentes tier medio" },
+        { map: "Kanturu (Ruins & Relics)", mobs: "Splinter Wolf, Iron Knight", lvl: "250 - 350", drop: "Gemstone, Items 380 No-Excelentes, Jewel of Harmony (Refinada)" },
+        { map: "Raklion", mobs: "Ice Walker, Iron Knight, Giant Mammoth", lvl: "300 - 400", drop: "Items Socket (Season 4), Esferas Vacías, Items Excelentes altos" },
+        { map: "Vulcanus (Mapa Gens)", mobs: "Zombies, Gladiators, Ashy", lvl: "300+", drop: "Drop aumentado x1.5, Items 380, Jewel of Creation" }
+      ],
+      bosses: [
+        { name: "Invasión de Dorados", map: "Mapas aleatorios", time: "Cada 4 horas", drop: "Cajas Kundun +1, +2, +3, +4, +5 (Tiran Items Excelentes)" },
+        { name: "White Wizard", map: "Lorencia, Noria, Devias", time: "Cada 2 horas", drop: "Ring of Magic (Wizard's Ring), Jewel of Bless" },
+        { name: "Kundun (Ilusión)", map: "Kalima 7", time: "Evento Diario 20:00", drop: "Items Ancient (Set completos), Armas 380 Excelentes" },
+        { name: "Selupan", map: "Raklion Hatchery", time: "Al abrir el huevo", drop: "Armas y Escudos Socket con 3 a 5 slots, Esferas nivel alto" },
+        { name: "Medusa", map: "Swamp of Peace", time: "Domingos 22:00", drop: "Paquetes de Joyas (x10, x20, x30), Items Excelentes 380" }
+      ]
     }
   },
   en: {
@@ -247,6 +282,41 @@ const translations = {
       privacy: 'Privacy Policy',
       rights: 'All rights reserved.',
       disclaimer: 'Mu Online is a registered trademark of Webzen Inc.',
+    },
+    guia: {
+      pageTag: 'The Kingdom Library',
+      pageTitle: 'Official Drops & Spots Guide',
+      pageDesc: 'All Mu Aethel knowledge in one place. Discover which monsters to hunt, where to train, and where to find the most coveted items.',
+      table1Title: '🗺️ Basic & Medium Leveling Zones',
+      table2Title: '🌋 Dangerous Zones (End-Game)',
+      table3Title: '👹 Invasions & World Bosses',
+      colMap: 'Map',
+      colLvl: 'Level Range',
+      colMobs: 'Notable Monsters',
+      colDrop: 'Main Drop',
+      colTime: 'Spawn Time',
+      colGuaranteed: 'Guaranteed Loot:',
+      zonasBase: [
+        { map: "Lorencia / Noria / Elbeland", mobs: "Spiders, Goblins, Lich, Mutans", lvl: "1 - 30", drop: "Basic Items, Scroll of Fireball, Heal, Zen" },
+        { map: "Devias (1, 2, 3)", mobs: "Elite Yeti, Assassin, Ice Queen", lvl: "30 - 60", drop: "Tier 2 Items, Horn of Uniria, Jewel of Chaos" },
+        { map: "Dungeon (1, 2, 3)", mobs: "Skeleton, Poison Bull, Gorgon", lvl: "40 - 70", drop: "Jewel of Bless, +3 / +4 Weapons, Poison Ring" },
+        { map: "Atlans (1, 2, 3)", mobs: "Bahamut, Vepar, Hydra", lvl: "70 - 100", drop: "Jewel of Soul, Aquatic Weapons, Ribbon Boxes" },
+        { map: "Lost Tower (1 to 7)", mobs: "Shadow, Poison Knight, Balrog", lvl: "80 - 120", drop: "Jewel of Bless, Jewel of Soul, +5 Items, Scroll of Twisting Slash" }
+      ],
+      zonasAltas: [
+        { map: "Tarkan (1, 2)", mobs: "Mutant, Iron Wheel, Zaikan", lvl: "130 - 180", drop: "Low Excellent Items, Jewel of Life" },
+        { map: "Icarus", mobs: "Alquamos, Mega Crust, Dark Phoenix", lvl: "170 - 230", drop: "Loch's Feather, Crest of Monarch, Mid Excellent Items" },
+        { map: "Kanturu (Ruins & Relics)", mobs: "Splinter Wolf, Iron Knight", lvl: "250 - 350", drop: "Gemstone, Non-Excellent 380 Items, Jewel of Harmony" },
+        { map: "Raklion", mobs: "Ice Walker, Iron Knight, Giant Mammoth", lvl: "300 - 400", drop: "Socket Items (Season 4), Empty Spheres, High Excellent Items" },
+        { map: "Vulcanus (Gens Map)", mobs: "Zombies, Gladiators, Ashy", lvl: "300+", drop: "x1.5 Drop Rate, 380 Items, Jewel of Creation" }
+      ],
+      bosses: [
+        { name: "Golden Invasion", map: "Random Maps", time: "Every 4 hours", drop: "Kundun Boxes +1 to +5 (Drop Excellent Items)" },
+        { name: "White Wizard", map: "Lorencia, Noria, Devias", time: "Every 2 hours", drop: "Ring of Magic (Wizard's Ring), Jewel of Bless" },
+        { name: "Kundun (Illusion)", map: "Kalima 7", time: "Daily Event 20:00", drop: "Ancient Items (Full Sets), Excellent 380 Weapons" },
+        { name: "Selupan", map: "Raklion Hatchery", time: "When egg opens", drop: "Socket Weapons & Shields (3-5 slots), High Level Spheres" },
+        { name: "Medusa", map: "Swamp of Peace", time: "Sundays 22:00", drop: "Jewel Bundles (x10, x20, x30), Excellent 380 Items" }
+      ]
     }
   },
   pt: {
@@ -368,6 +438,41 @@ const translations = {
       privacy: 'Política de Privacidade',
       rights: 'Todos os direitos reservados.',
       disclaimer: 'Mu Online é uma marca registrada da Webzen Inc.',
+    },
+    guia: {
+      pageTag: 'A Biblioteca do Reino',
+      pageTitle: 'Guia Oficial de Drops & Spots',
+      pageDesc: 'Todo o conhecimento do Mu Aethel em um só lugar. Descubra quais monstros caçar, onde treinar e onde conseguir os itens mais cobiçados.',
+      table1Title: '🗺️ Zonas de Up Básicas e Médias',
+      table2Title: '🌋 Zonas Perigosas (End-Game)',
+      table3Title: '👹 Invasões e Chefes Mundiais (World Bosses)',
+      colMap: 'Mapa',
+      colLvl: 'Faixa de Nível',
+      colMobs: 'Monstros Notáveis',
+      colDrop: 'Drop Principal',
+      colTime: 'Aparição',
+      colGuaranteed: 'Saque Garantido:',
+      zonasBase: [
+        { map: "Lorencia / Noria / Elbeland", mobs: "Spiders, Goblins, Lich, Mutans", lvl: "1 - 30", drop: "Itens Básicos, Scroll of Fireball, Heal, Zen" },
+        { map: "Devias (1, 2, 3)", mobs: "Elite Yeti, Assassin, Ice Queen", lvl: "30 - 60", drop: "Itens tier 2, Horn of Uniria, Jewel of Chaos" },
+        { map: "Dungeon (1, 2, 3)", mobs: "Skeleton, Poison Bull, Gorgon", lvl: "40 - 70", drop: "Jewel of Bless, Armas +3 / +4, Poison Ring" },
+        { map: "Atlans (1, 2, 3)", mobs: "Bahamut, Vepar, Hydra", lvl: "70 - 100", drop: "Jewel of Soul, Armas Aquáticas, Cajas Ribbon" },
+        { map: "Lost Tower (1 a 7)", mobs: "Shadow, Poison Knight, Balrog", lvl: "80 - 120", drop: "Jewel of Bless, Jewel of Soul, Itens +5, Scroll of Twisting Slash" }
+      ],
+      zonasAltas: [
+        { map: "Tarkan (1, 2)", mobs: "Mutant, Iron Wheel, Zaikan", lvl: "130 - 180", drop: "Itens Excelentes baixos, Jewel of Life" },
+        { map: "Icarus", mobs: "Alquamos, Mega Crust, Dark Phoenix", lvl: "170 - 230", drop: "Loch's Feather, Crest of Monarch, Itens Excelentes médios" },
+        { map: "Kanturu (Ruins & Relics)", mobs: "Splinter Wolf, Iron Knight", lvl: "250 - 350", drop: "Gemstone, Itens 380 Não-Excelentes, Jewel of Harmony" },
+        { map: "Raklion", mobs: "Ice Walker, Iron Knight, Giant Mammoth", lvl: "300 - 400", drop: "Itens Socket (Season 4), Esferas Vazias, Itens Excelentes altos" },
+        { map: "Vulcanus (Mapa Gens)", mobs: "Zombies, Gladiators, Ashy", lvl: "300+", drop: "Drop aumentado x1.5, Itens 380, Jewel of Creation" }
+      ],
+      bosses: [
+        { name: "Invasão de Dourados", map: "Mapas aleatórios", time: "A cada 4 horas", drop: "Kundun Boxes +1 a +5 (Dropam Itens Excelentes)" },
+        { name: "White Wizard", map: "Lorencia, Noria, Devias", time: "A cada 2 horas", drop: "Ring of Magic (Wizard's Ring), Jewel of Bless" },
+        { name: "Kundun (Ilusão)", map: "Kalima 7", time: "Evento Diário 20:00", drop: "Itens Ancient (Set completo), Armas 380 Excelentes" },
+        { name: "Selupan", map: "Raklion Hatchery", time: "Ao abrir o ovo", drop: "Armas e Escudos Socket (3 a 5 slots), Esferas de alto nível" },
+        { name: "Medusa", map: "Swamp of Peace", time: "Domingos 22:00", drop: "Pacotes de Joias (x10, x20, x30), Itens Excelentes 380" }
+      ]
     }
   },
 };
