@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '../../../../lib/db';
-import { Resend } from 'resend';
 
-// Inicializamos el enviador de correos
-const resend = new Resend(process.env.RESEND_API_KEY);
+// El sistema de correos está pausado hasta que configuremos la API KEY
+// import { Resend } from 'resend';
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
@@ -15,7 +15,6 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Faltan campos requeridos.' }, { status: 400 });
     }
     
-    // Evitar inyección SQL básica en el nombre de usuario
     if (!/^[a-zA-Z0-9_]{4,10}$/.test(username)) {
       return NextResponse.json({ error: 'El usuario debe tener entre 4 y 10 letras o números.' }, { status: 400 });
     }
@@ -40,9 +39,7 @@ export async function POST(request) {
       return NextResponse.json({ error: 'El correo electrónico ya está registrado.' }, { status: 409 });
     }
 
-    // 4. Crear la cuenta (Insertar en MEMB_INFO)
-    // Nota: Guardamos en texto plano asumiendo configuración base de Louis Emulator.
-    // Si usás MD5, cambiaremos @password por [dbo].[WZ_MD5_Encode](@password)
+    // 4. Crear la cuenta
     await pool.request()
       .input('username', username)
       .input('password', password)
@@ -60,17 +57,6 @@ export async function POST(request) {
           '2000-01-01', '2000-01-01', '1', '0', '1'
         )
       `);
-
-    // 5. Enviar correo de bienvenida (Opcional en esta etapa, pero funcional)
-    // Descomentaremos esto cuando tengas tu cuenta de Resend configurada
-    /*
-    await resend.emails.send({
-      from: 'Mu Aethel <onboarding@resend.dev>', // Cambiaremos por tu dominio verificado
-      to: email,
-      subject: '¡Bienvenido al Reino de Mu Aethel!',
-      html: `<h2>Hola ${username},</h2><p>Tu cuenta se ha creado con éxito. Ya puedes iniciar sesión en el servidor.</p>`
-    });
-    */
 
     return NextResponse.json({ success: true, message: 'Cuenta creada con éxito.' }, { status: 201 });
 
