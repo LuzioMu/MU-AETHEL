@@ -1,7 +1,7 @@
 'use client';
 
 // =========================================================================
-// MU AETHEL - Encabezado / Navegación (Links Globales Arreglados)
+// MU AETHEL - Encabezado / Navegación (Links a Login/Registro corregidos)
 // =========================================================================
 
 import { useI18n } from '../lib/i18n';
@@ -60,7 +60,7 @@ export default function Header() {
           </span>
         </a>
 
-        {/* CENTRO: NAVEGACIÓN CON RUTAS ABSOLUTAS (/#) */}
+        {/* CENTRO: NAVEGACIÓN CON RUTAS ABSOLUTAS */}
         <nav className="hidden lg:flex items-center gap-8 text-[15px] font-bold tracking-wider mx-auto">
           <a href="/#inicio" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.home') || 'Inicio'}</a>
           <a href="/#noticias" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.news') || 'Noticias'}</a>
@@ -88,14 +88,16 @@ export default function Header() {
             ))}
           </div>
 
+          {/* ACÁ ESTÁ EL ARREGLO: href="/registro" */}
           <a 
-            href="/#registro" 
+            href="/registro" 
             className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#fce893] to-[#cba135] border border-[#fff3b0] text-[#050a12] font-black text-sm tracking-wide shadow-[0_0_15px_rgba(203,161,53,0.4)] hover:shadow-[0_0_20px_rgba(252,232,147,0.7)] hover:scale-105 transition-all"
           >
             Crear Cuenta
           </a>
           
-          <a href="/#login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">
+          {/* ACÁ ESTÁ EL ARREGLO: href="/login" */}
+          <a href="/login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">
             Ingresar
           </a>
         </div>
