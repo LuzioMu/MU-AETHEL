@@ -34,8 +34,7 @@ export default function DownloadCenter() {
           </p>
 
           <a
-            href="/MuAethelClientFull.zip"
-            download
+            href="https://github.com/LuzioMu/MU-AETHEL/releases/download/v1.0.0/Mu.Aethel.zip"
             className="mu-button mu-button-gold inline-block px-8 py-4 rounded font-display text-xl tracking-wider text-center shadow-lg transition-transform hover:scale-105"
           >
             {t('downloads.btnDownload')}
