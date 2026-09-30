@@ -1,10 +1,10 @@
 {
   "version": "1.0.1",
   "downloadUrl": "https://raw.githubusercontent.com/LuzioMu/MU-AETHEL/main/launcher/parches/",
-  "files": [
-    {
-      "path": "main.premium",
-      "hash": "1"
-    }
-  ]
+"files": [
+  {
+    "path": "main.premium",
+    "hash": "a1b2c3d4..." 
+  }
+]
 }
