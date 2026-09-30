@@ -1,12 +1,12 @@
 'use client';
 
 // =========================================================================
-// MU AETHEL - Encabezado / Navegación
+// MU AETHEL - Encabezado / Navegación (Rediseño 2026)
 // =========================================================================
 
 import { useI18n } from '../lib/i18n';
 
-// Banderas SVG nativas (Carga garantizada en Windows, Mac y Móviles)
+// Banderas SVG nativas (Carga garantizada en cualquier dispositivo)
 const FLAGS = {
   es: (
     <svg className="w-5 h-3.5 rounded-sm overflow-hidden inline-block shrink-0" viewBox="0 0 640 480">
@@ -40,82 +40,69 @@ const FLAGS = {
 };
 
 const languages = [
-  { code: 'es', label: 'ES' },
-  { code: 'en', label: 'EN' },
-  { code: 'pt', label: 'PT' },
+  { code: 'es', label: 'Español' },
+  { code: 'en', label: 'English' },
+  { code: 'pt', label: 'Português' },
 ];
 
 export default function Header() {
   const { lang, setLang, t } = useI18n();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#102542] bg-[#050a12]/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+    <header className="sticky top-0 z-50 w-full border-b-2 border-[#102542] bg-gradient-to-r from-[#050a12]/95 via-[#0a182e]/95 to-[#050a12]/95 backdrop-blur-md shadow-lg shadow-[#000000]/50">
+      <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 py-3 sm:px-6">
         
-        {/* LOGO */}
-        <a href="#inicio" className="flex items-center gap-3 group shrink-0">
-          <img src="/logo.png" alt="Mu Aethel Logo" className="w-12 h-12 object-contain drop-shadow-[0_0_8px_rgba(252,232,147,0.4)]" />
-          <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-wider text-[#fce893] group-hover:text-white transition-colors" style={{ fontFamily: "'Cinzel', serif" }}>
-              MU AETHEL
-            </span>
-            <span className="text-[9px] font-bold tracking-widest px-1.5 py-0.5 rounded bg-[#102542] text-[#51e2f5] w-fit mt-0.5 uppercase">
-              S6 EP3
-            </span>
-          </div>
+        {/* LADO IZQUIERDO: LOGO Y NOMBRE */}
+        <a href="#inicio" className="flex items-center gap-3 shrink-0">
+          <img src="/logo.png" alt="Mu Aethel" className="w-12 h-12 object-contain drop-shadow-[0_0_8px_rgba(252,232,147,0.3)] hover:scale-105 transition-transform" />
+          <span className="text-2xl font-black tracking-widest text-[#fce893] drop-shadow-md hidden sm:block" style={{ fontFamily: "'Cinzel', serif" }}>
+            Mu Aethel
+          </span>
         </a>
 
-        {/* NAVEGACIÓN CENTRAL */}
-        <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide flex-1 justify-center">
-          <a href="#inicio" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('nav.home') || 'Inicio'}</a>
-          <a href="#noticias" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('nav.news') || 'Noticias'}</a>
-          <a href="#economia" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('nav.economy') || 'Economía'}</a>
-          <a href="#descargas" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('nav.downloads') || 'Descargas'}</a>
+        {/* CENTRO: NAVEGACIÓN */}
+        <nav className="hidden lg:flex items-center gap-8 text-[15px] font-bold tracking-wider mx-auto">
+          <a href="#inicio" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.home') || 'Inicio'}</a>
+          <a href="#noticias" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.news') || 'Noticias'}</a>
+          <a href="#economia" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.economy') || 'Economía'}</a>
+          <a href="#descargas" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.downloads') || 'Descargas'}</a>
         </nav>
 
-        {/* CONTROLES DERECHOS */}
-        <div className="flex items-center gap-5 shrink-0">
+        {/* LADO DERECHO: BANDERAS Y CUENTA */}
+        <div className="flex items-center gap-6 shrink-0">
           
-          {/* BOTONES LOGIN / REGISTRO */}
-          <div className="hidden md:flex items-center gap-4 text-sm font-medium">
-            <a href="#login" className="text-slate-300 hover:text-white transition-colors">Ingresar</a>
-            <a href="#registro" className="px-4 py-1.5 rounded bg-transparent border border-[#51e2f5]/50 text-[#51e2f5] hover:bg-[#51e2f5]/10 hover:border-[#51e2f5] transition-all">
-              Crear Cuenta
-            </a>
-          </div>
-
-          <div className="hidden md:block w-px h-5 bg-slate-700"></div>
-
-          {/* SELECTOR DE IDIOMA CON TEXTO 'IDIOMA' */}
+          {/* Selector de Idiomas Visual (Sólo las banderas) */}
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-bold tracking-wider text-slate-400 uppercase mr-1 hidden sm:inline-block">
-              Idioma:
-            </span>
-            <div className="flex items-center gap-2 bg-[#0a182e]/60 border border-[#102542] p-1 rounded">
-              {languages.map((l, index) => {
-                const active = l.code === lang;
-                return (
-                  <div key={l.code} className="flex items-center gap-2">
-                    <button
-                      onClick={() => setLang(l.code)}
-                      className={`flex items-center gap-1.5 px-2 py-0.5 rounded transition-all ${
-                        active 
-                          ? 'bg-[#102542] border border-[#51e2f5]/50 text-white shadow-[0_0_8px_rgba(81,226,245,0.3)]' 
-                          : 'text-slate-400 hover:text-slate-200 opacity-70 hover:opacity-100'
-                      }`}
-                      title={l.code.toUpperCase()}
-                    >
-                      {FLAGS[l.code]}
-                      <span className="text-xs font-bold">{l.label}</span>
-                    </button>
-                    {index < languages.length - 1 && <span className="text-slate-700 text-xs">|</span>}
-                  </div>
-                );
-              })}
-            </div>
+            {languages.map((l) => (
+              <button
+                key={l.code}
+                onClick={() => setLang(l.code)}
+                title={l.label}
+                className={`p-0.5 rounded transition-all hover:scale-110 ${
+                  lang === l.code 
+                    ? 'border-2 border-[#fce893] shadow-[0_0_10px_rgba(252,232,147,0.5)] opacity-100' 
+                    : 'border-2 border-transparent opacity-50 hover:opacity-100 grayscale-[30%]'
+                }`}
+              >
+                {FLAGS[l.code]}
+              </button>
+            ))}
           </div>
 
+          {/* Botón de Crear Cuenta (Estilo Dorado) */}
+          <a 
+            href="#registro" 
+            className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#fce893] to-[#cba135] border border-[#fff3b0] text-[#050a12] font-black text-sm tracking-wide shadow-[0_0_15px_rgba(203,161,53,0.4)] hover:shadow-[0_0_20px_rgba(252,232,147,0.7)] hover:scale-105 transition-all"
+          >
+            Crear Cuenta
+          </a>
+          
+          {/* Botón de Login Textual */}
+          <a href="#login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">
+            Ingresar
+          </a>
         </div>
+
       </div>
     </header>
   );
