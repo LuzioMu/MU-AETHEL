@@ -1,7 +1,6 @@
-@import "tailwindcss";
-
-/* Carga de fuentes medievales y limpias */
+/* Carga de fuentes medievales y limpias (Siempre va primero) */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
 
 @theme {
   --color-slate-100: #f1f5f9;
