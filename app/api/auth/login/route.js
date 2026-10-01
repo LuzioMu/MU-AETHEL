@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '../../../../lib/db';
 import { SignJWT } from 'jose';
-import { cookies } from 'next/headers';
 
 export async function POST(request) {
   try {
@@ -26,15 +25,17 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Usuario o contraseña incorrectos.' }, { status: 401 });
     }
 
-    // Si todo está bien, creamos el "Pase VIP" (Token)
+    // Creamos el "Pase VIP" (Token)
     const secret = new TextEncoder().encode(process.env.JWT_SECRET);
     const token = await new SignJWT({ username: username })
       .setProtectedHeader({ alg: 'HS256' })
-      .setExpirationTime('24h') // La sesión dura 24 horas
+      .setExpirationTime('24h') 
       .sign(secret);
 
-    // Guardamos el pase en las Cookies del navegador del jugador
-    cookies().set('mu_session', token, {
+    // ARMAMOS LA RESPUESTA Y LE PEGAMOS LA COOKIE ACÁ
+    const response = NextResponse.json({ success: true, message: 'Login exitoso.' });
+    
+    response.cookies.set('mu_session', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
@@ -42,7 +43,7 @@ export async function POST(request) {
       path: '/',
     });
 
-    return NextResponse.json({ success: true, message: 'Login exitoso.' });
+    return response;
 
   } catch (error) {
     console.error('Error en login:', error);
