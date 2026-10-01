@@ -1,9 +1,10 @@
 'use client';
 
 // =========================================================================
-// MU AETHEL - Encabezado / Navegación (Links a Login/Registro corregidos)
+// MU AETHEL - Encabezado / Navegación (Con Sesión Dinámica)
 // =========================================================================
 
+import { useState, useEffect } from 'react';
 import { useI18n } from '../lib/i18n';
 
 // Banderas SVG nativas
@@ -47,6 +48,17 @@ const languages = [
 
 export default function Header() {
   const { lang, setLang, t } = useI18n();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Al cargar cualquier página, el Header pregunta si hay alguien logueado
+    fetch('/api/auth/session')
+      .then(res => res.ok ? res.json() : { loggedIn: false })
+      .then(data => {
+        if (data.loggedIn) setUser(data.username);
+      })
+      .catch(() => setUser(null));
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-2 border-[#102542] bg-gradient-to-r from-[#050a12]/95 via-[#0a182e]/95 to-[#050a12]/95 backdrop-blur-md shadow-lg shadow-[#000000]/50">
@@ -88,18 +100,28 @@ export default function Header() {
             ))}
           </div>
 
-          {/* ACÁ ESTÁ EL ARREGLO: href="/registro" */}
-          <a 
-            href="/registro" 
-            className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#fce893] to-[#cba135] border border-[#fff3b0] text-[#050a12] font-black text-sm tracking-wide shadow-[0_0_15px_rgba(203,161,53,0.4)] hover:shadow-[0_0_20px_rgba(252,232,147,0.7)] hover:scale-105 transition-all"
-          >
-            Crear Cuenta
-          </a>
-          
-          {/* ACÁ ESTÁ EL ARREGLO: href="/login" */}
-          <a href="/login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">
-            Ingresar
-          </a>
+          {/* LÓGICA DE SESIÓN: Si hay usuario muestra su nombre, sino los botones */}
+          {user ? (
+            <a 
+              href="/cuenta" 
+              className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#10567e] to-[#167d9e] border border-[#51e2f5] text-white font-black text-sm tracking-wide shadow-[0_0_15px_rgba(81,226,245,0.4)] hover:shadow-[0_0_20px_rgba(81,226,245,0.7)] hover:scale-105 transition-all"
+            >
+              {user}
+            </a>
+          ) : (
+            <>
+              <a 
+                href="/registro" 
+                className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#fce893] to-[#cba135] border border-[#fff3b0] text-[#050a12] font-black text-sm tracking-wide shadow-[0_0_15px_rgba(203,161,53,0.4)] hover:shadow-[0_0_20px_rgba(252,232,147,0.7)] hover:scale-105 transition-all"
+              >
+                Crear Cuenta
+              </a>
+              
+              <a href="/login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">
+                Ingresar
+              </a>
+            </>
+          )}
         </div>
 
       </div>
