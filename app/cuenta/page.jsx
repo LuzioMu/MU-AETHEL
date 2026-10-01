@@ -97,7 +97,7 @@ function CuentaContent() {
             </div>
           </div>
 
-{/* Tokens P2E con Ranking */}
+          {/* Tokens P2E con Ranking */}
           <div className="flex flex-col gap-4">
             
             {/* Honor Token */}
@@ -106,13 +106,14 @@ function CuentaContent() {
                 <img src="/moneda-honor.png" alt="Honor Token" className="w-14 h-14 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] group-hover:scale-110 transition-transform" />
                 <div>
                   <p className="text-[10px] text-white uppercase tracking-widest font-bold">Honor Tokens</p>
-                  <p className="text-2xl text-white font-mono leading-none">{profile.tokens.honor.balance}</p>
+                  {/* El '?' evita que la página crashee si la API demora en actualizarse */}
+                  <p className="text-2xl text-white font-mono leading-none">{profile.tokens?.honor?.balance || 0}</p>
                 </div>
               </div>
               <div className="text-right">
                 <span className="text-[9px] text-slate-400 uppercase tracking-widest block mb-1.5">Posición Global</span>
                 <span className="inline-block bg-[#050a12] border border-slate-700 text-slate-300 px-3 py-1 rounded text-xs font-bold shadow-inner">
-                  {profile.tokens.honor.rank}
+                  {profile.tokens?.honor?.rank || 'Sin rango'}
                 </span>
               </div>
             </div>
@@ -123,18 +124,19 @@ function CuentaContent() {
                 <img src="/moneda-helper.png" alt="Helper Token" className="w-14 h-14 drop-shadow-[0_0_8px_rgba(252,232,147,0.3)] group-hover:scale-110 transition-transform" />
                 <div>
                   <p className="text-[10px] text-white uppercase tracking-widest font-bold">Helper Tokens</p>
-                  <p className="text-2xl text-white font-mono leading-none">{profile.tokens.helper.balance}</p>
+                  <p className="text-2xl text-white font-mono leading-none">{profile.tokens?.helper?.balance || 0}</p>
                 </div>
               </div>
               <div className="text-right">
                 <span className="text-[9px] text-slate-400 uppercase tracking-widest block mb-1.5">Posición Global</span>
                 <span className="inline-block bg-[#050a12] border border-slate-700 text-slate-300 px-3 py-1 rounded text-xs font-bold shadow-inner">
-                  {profile.tokens.helper.rank}
+                  {profile.tokens?.helper?.rank || 'Sin rango'}
                 </span>
               </div>
             </div>
 
           </div>
+        </div>
 
         {/* Lista de Personajes (Formato Fila) */}
         <h2 className="text-xl text-[#51e2f5] mb-4 border-b border-[#102542] pb-2 uppercase tracking-widest font-bold">
@@ -175,7 +177,6 @@ function CuentaContent() {
                     <span className="font-mono">{char.Experience ? char.Experience.toLocaleString() : 0} XP</span>
                   </div>
                   <div className="w-full bg-[#050a12] h-2 rounded-full border border-slate-800 overflow-hidden">
-                    {/* Placeholder visual de barra al 65% porque el max exp de Mu varía por nivel */}
                     <div className="bg-gradient-to-r from-[#fce893] to-[#cba135] h-full rounded-full w-[65%]"></div>
                   </div>
                 </div>
