@@ -35,7 +35,16 @@ export async function GET(request) {
       `);
 
     const guildInfo = guildResult.recordset.length > 0 ? guildResult.recordset[0] : null;
-    const tokens = { honor: 0, helper: 0 };
+
+    // =========================================================================
+    // ECONOMÍA PLAY-TO-EARN (Estructura lista para conectar con tus tablas)
+    // =========================================================================
+    // Aquí a futuro harás una consulta que cuente en qué posición está el jugador:
+    // Ej: SELECT COUNT(*) + 1 FROM Economia WHERE Honor > MiHonor
+    const tokens = { 
+      honor: { balance: 0, rank: "Sin rango" }, 
+      helper: { balance: 0, rank: "Sin rango" } 
+    };
 
     return NextResponse.json({ 
       username: username,
