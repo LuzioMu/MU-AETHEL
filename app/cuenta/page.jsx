@@ -97,24 +97,44 @@ function CuentaContent() {
             </div>
           </div>
 
-          {/* Tokens P2E */}
+{/* Tokens P2E con Ranking */}
           <div className="flex flex-col gap-4">
-            <div className="bg-[#10567e]/20 border border-[#167d9e] p-4 rounded flex items-center gap-4">
-              <img src="/moneda-honor.png" alt="Honor Token" className="w-14 h-14 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" />
-              <div>
-                <p className="text-[10px] text-white uppercase tracking-widest font-bold">Honor Tokens</p>
-                <p className="text-2xl text-white font-mono leading-none">{profile.tokens.honor}</p>
+            
+            {/* Honor Token */}
+            <div className="bg-[#10567e]/20 border border-[#167d9e] p-4 rounded flex items-center justify-between gap-4 group hover:border-[#51e2f5]/50 transition-colors">
+              <div className="flex items-center gap-4">
+                <img src="/moneda-honor.png" alt="Honor Token" className="w-14 h-14 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] group-hover:scale-110 transition-transform" />
+                <div>
+                  <p className="text-[10px] text-white uppercase tracking-widest font-bold">Honor Tokens</p>
+                  <p className="text-2xl text-white font-mono leading-none">{profile.tokens.honor.balance}</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <span className="text-[9px] text-slate-400 uppercase tracking-widest block mb-1.5">Posición Global</span>
+                <span className="inline-block bg-[#050a12] border border-slate-700 text-slate-300 px-3 py-1 rounded text-xs font-bold shadow-inner">
+                  {profile.tokens.honor.rank}
+                </span>
               </div>
             </div>
-            <div className="bg-[#10567e]/20 border border-[#167d9e] p-4 rounded flex items-center gap-4">
-              <img src="/moneda-helper.png" alt="Helper Token" className="w-14 h-14 drop-shadow-[0_0_8px_rgba(252,232,147,0.3)]" />
-              <div>
-                <p className="text-[10px] text-white uppercase tracking-widest font-bold">Helper Tokens</p>
-                <p className="text-2xl text-white font-mono leading-none">{profile.tokens.helper}</p>
+
+            {/* Helper Token */}
+            <div className="bg-[#10567e]/20 border border-[#167d9e] p-4 rounded flex items-center justify-between gap-4 group hover:border-[#fce893]/50 transition-colors">
+              <div className="flex items-center gap-4">
+                <img src="/moneda-helper.png" alt="Helper Token" className="w-14 h-14 drop-shadow-[0_0_8px_rgba(252,232,147,0.3)] group-hover:scale-110 transition-transform" />
+                <div>
+                  <p className="text-[10px] text-white uppercase tracking-widest font-bold">Helper Tokens</p>
+                  <p className="text-2xl text-white font-mono leading-none">{profile.tokens.helper.balance}</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <span className="text-[9px] text-slate-400 uppercase tracking-widest block mb-1.5">Posición Global</span>
+                <span className="inline-block bg-[#050a12] border border-slate-700 text-slate-300 px-3 py-1 rounded text-xs font-bold shadow-inner">
+                  {profile.tokens.helper.rank}
+                </span>
               </div>
             </div>
+
           </div>
-        </div>
 
         {/* Lista de Personajes (Formato Fila) */}
         <h2 className="text-xl text-[#51e2f5] mb-4 border-b border-[#102542] pb-2 uppercase tracking-widest font-bold">
