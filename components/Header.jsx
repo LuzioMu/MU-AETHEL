@@ -1,7 +1,7 @@
 'use client';
 
 // =========================================================================
-// MU AETHEL - Encabezado / Navegación (Con Sesión Dinámica)
+// MU AETHEL - Encabezado / Navegación (Con Sesión Dinámica y Fixes)
 // =========================================================================
 
 import { useState, useEffect } from 'react';
@@ -64,25 +64,27 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b-2 border-[#102542] bg-gradient-to-r from-[#050a12]/95 via-[#0a182e]/95 to-[#050a12]/95 backdrop-blur-md shadow-lg shadow-[#000000]/50">
       <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 py-3 sm:px-6">
         
-        {/* LADO IZQUIERDO: LOGO Y NOMBRE */}
-        <a href="/#inicio" className="flex items-center gap-3 shrink-0">
-          <img src="/logo.png" alt="Mu Aethel" className="w-12 h-12 object-contain drop-shadow-[0_0_8px_rgba(252,232,147,0.3)] hover:scale-105 transition-transform" />
-          <span className="text-2xl font-black tracking-widest text-[#fce893] drop-shadow-md hidden sm:block" style={{ fontFamily: "'Cinzel', serif" }}>
-            Mu Aethel
-          </span>
-        </a>
+        {/* LADO IZQUIERDO: LOGO Y NOMBRE (Fijo a la izquierda) */}
+        <div className="flex-1 min-w-[200px]">
+          <a href="/#inicio" className="inline-flex items-center gap-3 shrink-0">
+            <img src="/logo.png" alt="Mu Aethel" className="w-12 h-12 object-contain drop-shadow-[0_0_8px_rgba(252,232,147,0.3)] hover:scale-105 transition-transform" />
+            <span className="text-2xl font-black tracking-widest text-[#fce893] drop-shadow-md hidden sm:block" style={{ fontFamily: "'Cinzel', serif" }}>
+              Mu Aethel
+            </span>
+          </a>
+        </div>
 
-        {/* CENTRO: NAVEGACIÓN CON RUTAS ABSOLUTAS */}
-        <nav className="hidden lg:flex items-center gap-8 text-[15px] font-bold tracking-wider mx-auto">
-          <a href="/#inicio" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.home') || 'Inicio'}</a>
-          <a href="/noticias" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.news') || 'Noticias'}</a>
-          <a href="/#economia" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.economy') || 'Economía'}</a>
-          <a href="/#descargas" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.downloads') || 'Descargas'}</a>
+        {/* CENTRO: NAVEGACIÓN (Centrada y con glow hover) */}
+        <nav className="hidden lg:flex flex-1 justify-center items-center gap-8 text-[15px] font-bold tracking-wider">
+          <a href="/#inicio" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(81,226,245,0.6)] transition-all">{t('nav.home') || 'Inicio'}</a>
+          <a href="/noticias" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(81,226,245,0.6)] transition-all">{t('nav.news') || 'Noticias'}</a>
+          <a href="/#economia" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(81,226,245,0.6)] transition-all">{t('nav.economy') || 'Economía'}</a>
+          <a href="/#descargas" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 hover:drop-shadow-[0_0_8px_rgba(81,226,245,0.6)] transition-all">{t('nav.download') || 'Descargas'}</a>
           <a href="/guias" className="text-[#fce893] hover:text-white hover:-translate-y-0.5 transition-all drop-shadow-[0_0_5px_rgba(252,232,147,0.5)]">{t('nav.guide') || 'Guías'}</a>
         </nav>
 
-        {/* LADO DERECHO: BANDERAS Y CUENTA */}
-        <div className="flex items-center gap-6 shrink-0">
+        {/* LADO DERECHO: BANDERAS Y CUENTA (Fijo a la derecha para no saltar) */}
+        <div className="flex-1 flex justify-end items-center gap-6 min-w-[280px]">
           
           <div className="flex items-center gap-2">
             {languages.map((l) => (
@@ -101,7 +103,7 @@ export default function Header() {
             ))}
           </div>
 
-          {/* LÓGICA DE SESIÓN: Si hay usuario muestra su nombre, sino los botones */}
+          {/* LÓGICA DE SESIÓN */}
           {user ? (
             <a 
               href="/cuenta" 
