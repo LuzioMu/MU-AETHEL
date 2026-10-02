@@ -2,11 +2,10 @@
 
 // ============================================================================
 //  MU AETHEL - Pie de página
-//  Estado del GameServer, datos de conexión, redes y soporte.
 // ============================================================================
 
 import { useI18n } from '../lib/i18n';
-import { SERVER, SOCIALS } from '../lib/serverConfig';
+import { SERVER } from '../lib/serverConfig';
 
 export default function Footer() {
   const { t } = useI18n();
@@ -50,23 +49,23 @@ export default function Footer() {
           </div>
         </section>
 
-        {/* Comunidad con traducciones dinámicas */}
+        {/* Comunidad (Corregido) */}
         <section>
-          <h2 className="text-[#fce893] font-bold tracking-widest uppercase mb-4 text-sm">{t('footer.community')}</h2>
+          <h2 className="font-data text-xs tracking-wider text-silver-500 uppercase mb-4">{t('footer.community')}</h2>
           <ul className="space-y-3">
             <li>
-              <a href="https://discord.gg/muaethel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-2 rounded border border-[#102542] hover:border-[#51e2f5] hover:bg-[#10567e]/20 transition-all text-slate-300 hover:text-white text-sm">
-                <span className="text-[#5865F2]">🎮</span> {t('footer.discord')}
+              <a href="https://discord.gg/muaethel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-steel-700 px-3 py-2 text-sm text-silver-400 transition-colors hover:border-arcane-500/70 hover:text-arcane-300">
+                <span className="text-[#5865F2] font-bold">🎮</span> {t('footer.discord')}
               </a>
             </li>
             <li>
-              <a href="https://instagram.com/muaethel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-2 rounded border border-[#102542] hover:border-[#e1306c] hover:bg-[#e1306c]/20 transition-all text-slate-300 hover:text-white text-sm">
-                <span className="text-[#e1306c]">📸</span> {t('footer.instagram')}
+              <a href="https://instagram.com/muaethel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-steel-700 px-3 py-2 text-sm text-silver-400 transition-colors hover:border-arcane-500/70 hover:text-arcane-300">
+                <span className="text-[#e1306c] font-bold">📸</span> {t('footer.instagram')}
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center gap-3 p-2 rounded border border-[#cba135]/50 bg-[#102542]/30 hover:border-[#fce893] hover:bg-[#cba135]/20 transition-all text-[#51e2f5] font-bold text-sm">
-                <span className="text-[#0070ba]">💳</span> {t('footer.donate')}
+              <a href="#" className="flex items-center gap-2 border border-relic-500/50 bg-relic-600/10 px-3 py-2 text-sm text-relic-300 transition-colors hover:border-relic-400 hover:bg-relic-600/20 font-bold">
+                <span className="text-[#0070ba] font-bold">💳</span> {t('footer.donate')}
               </a>
             </li>
           </ul>
