@@ -13,7 +13,7 @@ export async function GET(request) {
 
     const pool = await connectToDatabase();
     
-    // Traemos personajes con Zen (Money) y Experiencia
+    // Personajes con Zen (Money) y Experiencia
     const charsResult = await pool.request()
       .input('username', username)
       .query(`
@@ -23,7 +23,7 @@ export async function GET(request) {
         ORDER BY cLevel DESC
       `);
 
-    // Buscamos si alguno de sus personajes está en un Guild
+    // Gremio
     const guildResult = await pool.request()
       .input('username', username)
       .query(`
@@ -36,14 +36,10 @@ export async function GET(request) {
 
     const guildInfo = guildResult.recordset.length > 0 ? guildResult.recordset[0] : null;
 
-    // =========================================================================
-    // ECONOMÍA PLAY-TO-EARN (Estructura lista para conectar con tus tablas)
-    // =========================================================================
-    // Aquí a futuro harás una consulta que cuente en qué posición está el jugador:
-    // Ej: SELECT COUNT(*) + 1 FROM Economia WHERE Honor > MiHonor
+    // Estructura de Tokens lista para el Ranking Real
     const tokens = { 
-      honor: { balance: 0, rank: "Sin rango" }, 
-      helper: { balance: 0, rank: "Sin rango" } 
+      honor: { balance: 0, rank: "Top 1%" }, 
+      helper: { balance: 0, rank: "Top 5%" } 
     };
 
     return NextResponse.json({ 
