@@ -1,7 +1,7 @@
 'use client';
 
 // ============================================================================
-//  MU AETHEL - Página principal
+//  MU AETHEL - Página principal (Solucionada)
 // ============================================================================
 
 import { I18nProvider, useI18n } from '../lib/i18n';
@@ -9,7 +9,6 @@ import { SERVER } from '../lib/serverConfig';
 
 import Header from '../components/Header';
 import EventTimers from '../components/EventTimers';
-import NewsFeed from '../components/NewsFeed';
 import TokenEconomy from '../components/TokenEconomy';
 import DownloadCenter from '../components/DownloadCenter';
 import Footer from '../components/Footer';
@@ -18,55 +17,60 @@ function Hero() {
   const { t } = useI18n();
 
   const stats = [
-    { label: t('hero.statExp'), value: SERVER.rates.exp },
-    { label: t('hero.statDrop'), value: SERVER.rates.drop },
-    { label: t('hero.statReset'), value: SERVER.rates.reset },
-    { label: t('hero.statPlayers'), value: SERVER.rates.players },
+    { label: t('hero.statExp') || 'Experiencia', value: SERVER.rates.exp },
+    { label: t('hero.statDrop') || 'Drop', value: SERVER.rates.drop },
+    { label: t('hero.statReset') || 'Resets', value: SERVER.rates.reset },
+    { label: t('hero.statPlayers') || 'Online', value: SERVER.rates.players },
   ];
 
   return (
-    <section id="inicio" className="relative scroll-mt-24 overflow-hidden bg-abyss-900">
-      <div className="absolute inset-0 bg-grid bg-grid-cell opacity-70" aria-hidden="true" />
-      <div
-        className="absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-arcane-500/10 blur-3xl"
-        aria-hidden="true"
-      />
+    <section id="inicio" className="relative scroll-mt-24 min-h-[75vh] flex items-center justify-center">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050a12]/80 via-[#050a12]/40 to-[#050a12]/90 pointer-events-none" />
+      <div className="absolute left-1/2 top-10 h-[350px] w-[500px] -translate-x-1/2 rounded-full bg-[#51e2f5]/5 blur-[100px] pointer-events-none" />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
-        <p className="font-data text-xs tracking-[0.25em] text-arcane-400">{t('meta.tagline')}</p>
+      <div className="relative z-10 mx-auto max-w-5xl px-4 py-12 text-center sm:px-6 lg:py-16 flex flex-col items-center">
+        <p className="font-data text-xs tracking-[0.3em] text-[#51e2f5] uppercase font-semibold">
+          {t('meta.tagline')}
+        </p>
 
-        <h1 className="mt-4 font-display text-5xl leading-[0.95] text-silver-300 sm:text-7xl">
+        <h1 
+          className="mt-3 text-6xl sm:text-8xl font-display font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#fff3b0] via-[#fce893] to-[#cba135] drop-shadow-[0_4px_12px_rgba(252,232,147,0.2)]"
+          style={{ fontFamily: "'Cinzel', serif" }}
+        >
           {t('hero.title')}
         </h1>
 
-        <p className="mt-4 max-w-[26ch] font-display text-2xl leading-tight text-relic-300 sm:max-w-[32ch] sm:text-3xl">
+        <p className="mt-2 text-lg sm:text-xl font-data tracking-widest text-white uppercase drop-shadow-md">
+          {t('hero.subtitle')}
+        </p>
+
+        <p className="mt-4 max-w-xl text-base text-slate-200 mx-auto leading-relaxed">
           {t('hero.claim')}
         </p>
 
-        <p className="mt-5 max-w-[62ch] text-base leading-relaxed text-silver-400">
-          {t('hero.body')}
-        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3 sm:gap-4 text-xs font-bold">
+          <span className="px-4 py-2 rounded bg-[#0a182e]/90 border border-[#51e2f5]/50 text-[#51e2f5] tracking-wider shadow-[0_0_10px_rgba(81,226,245,0.1)]">
+            ⚔️ Play-to-Earn
+          </span>
+          <span className="px-4 py-2 rounded bg-black/90 border border-red-500/60 text-red-400 tracking-wider shadow-[0_0_10px_rgba(239,68,68,0.15)]">
+            🚫 No VIP
+          </span>
+          <span className="px-4 py-2 rounded bg-[#1a1508]/90 border border-[#fce893]/60 text-[#fce893] tracking-wider shadow-[0_0_10px_rgba(252,232,147,0.1)]">
+            🗓️ Eventos Diarios
+          </span>
+        </div>
 
-        <div className="mt-8 flex flex-wrap gap-3">
-          <a
-            href="#descargas"
-            className="border border-arcane-400/80 bg-arcane-600/25 px-6 py-3 font-display text-lg tracking-wide text-arcane-200 shadow-neon transition-colors hover:bg-arcane-600/45 uppercase"
-          >
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <a href="#descargas" className="mu-button mu-button-gold px-8 py-3 rounded text-[#050a12] font-black tracking-wide shadow-[0_0_15px_rgba(252,232,147,0.6)] hover:scale-105 transition-transform">
             {t('hero.ctaPrimary')}
-          </a>
-          <a
-            href="#economia"
-            className="border border-steel-600 px-6 py-3 font-display text-lg tracking-wide text-silver-300 transition-colors hover:border-relic-400/70 hover:text-relic-300 uppercase"
-          >
-            {t('hero.ctaSecondary')}
           </a>
         </div>
 
-        <dl className="mt-12 grid max-w-3xl grid-cols-2 gap-px border border-steel-700 bg-steel-700 sm:grid-cols-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="bg-abyss-700 px-4 py-3">
-              <dt className="font-data text-[11px] text-silver-500 uppercase">{stat.label}</dt>
-              <dd className="mt-1 font-display text-xl text-arcane-300">{stat.value}</dd>
+        <dl className="mt-14 grid w-full max-w-3xl grid-cols-2 gap-px bg-slate-800/50 border border-slate-700/50 sm:grid-cols-4 rounded overflow-hidden shadow-2xl backdrop-blur-sm">
+          {stats.map((stat, idx) => (
+            <div key={idx} className="bg-[#050a12]/90 px-4 py-4 text-center hover:bg-[#0a182e]/90 transition-colors">
+              <dt className="font-data text-[10px] text-slate-400 uppercase tracking-widest">{stat.label}</dt>
+              <dd className="mt-1 text-2xl font-bold text-white" style={{ fontFamily: "'Cinzel', serif" }}>{stat.value}</dd>
             </div>
           ))}
         </dl>
@@ -75,97 +79,157 @@ function Hero() {
   );
 }
 
-function CastleSiegeAndRanking() {
+function ServerFeatures() {
   const { t } = useI18n();
 
+  const features = [
+    {
+      icon: "⚔️",
+      title: t('features.bossesTitle') || "Jefes & Bosses Custom",
+      tag: t('features.bossesTag') || "PVE EXCLUSIVO",
+      desc: t('features.bossesDesc') || "World Bosses únicos con mecánicas avanzadas y eventos de invasión con recompensas exclusivas."
+    },
+    {
+      icon: "🗺️",
+      title: t('features.mapsTitle') || "Mapas Remasterizados",
+      tag: t('features.mapsTag') || "ZONAS PVP / SAFE",
+      desc: t('features.mapsDesc') || "Zonas de leveo optimizadas y mapas especiales de PvP abierto sin penalizaciones."
+    },
+    {
+      icon: "⚖️",
+      title: t('features.balanceTitle') || "Balance PvP Season 6",
+      tag: t('features.balanceTag') || "EQUILIBRIO TOTAL",
+      desc: t('features.balanceDesc') || "Ajustes de daño y resistencia en las 7 clases para combates justos en duelos y Castle Siege."
+    },
+    {
+      icon: "💎",
+      title: t('features.economyTitle') || "Economía Play-to-Earn",
+      tag: t('features.economyTag') || "RECOMPENSAS P2E",
+      desc: t('features.economyDesc') || "Sistema de tokens por méritos dentro del juego. Cero pay-to-win, premiando el esfuerzo."
+    }
+  ];
+
   return (
-    <section className="bg-abyss-800 border-t border-steel-700/60 pt-16 pb-12">
+    <section className="relative z-10 py-16 bg-[#080d17]/95 border-y border-slate-800/80 backdrop-blur-sm">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        
-        {/* Castle Siege Banner */}
-        <div className="border border-steel-700 bg-panel p-8 shadow-inset mb-16 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex-1">
-            <h3 className="font-data text-xs tracking-widest text-relic-400 uppercase mb-1">{t('home.castleSub')}</h3>
-            <h2 className="font-display text-4xl text-silver-300 mb-4">{t('home.castleTitle')}</h2>
-            <p className="text-sm leading-relaxed text-silver-500 max-w-md">{t('home.castleDesc')}</p>
-          </div>
-          <div className="border border-steel-700 bg-abyss-900 p-6 text-center w-full md:w-auto shrink-0 shadow-inset">
-            <p className="font-data text-[10px] tracking-widest text-silver-500 uppercase mb-2">{t('home.castleSovereign')}</p>
-            <div className="font-display text-3xl text-relic-300 uppercase tracking-wider mb-2">{t('home.castleNone')}</div>
-            <div className="font-data text-xs text-arcane-400">{t('home.castleNext')}</div>
-          </div>
+        <div className="text-center mb-12">
+          <p className="font-data text-xs tracking-[0.2em] text-[#51e2f5] uppercase">{t('features.subtitle') || 'Novedades de Mu Aethel'}</p>
+          <h2 className="text-3xl sm:text-4xl mt-2 text-slate-200" style={{ fontFamily: "'Cinzel', serif" }}>
+            {t('features.mainTitle') || 'Modificaciones & Características'}
+          </h2>
         </div>
 
-        {/* Salón de la Fama */}
-        <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-          <div>
-            <h2 className="font-display text-3xl text-silver-300 sm:text-4xl">{t('home.rankTitle')}</h2>
-            <p className="mt-2 max-w-[60ch] font-data text-xs tracking-widest text-silver-500 uppercase">{t('home.rankSub')}</p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((item, idx) => (
+            <div key={idx} className="mu-frame p-6 rounded flex flex-col justify-between transition-transform hover:-translate-y-1 hover:border-[#102542] shadow-lg">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-3xl">{item.icon}</span>
+                  <span className="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded bg-[#102542] text-[#51e2f5] border border-[#485c78]">
+                    {item.tag}
+                  </span>
+                </div>
+                <h3 className="text-xl text-[#fce893] mb-2" style={{ fontFamily: "'Cinzel', serif" }}>{item.title}</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Top Resets */}
-          <div className="border border-steel-700 bg-panel p-6 shadow-inset">
-            <h3 className="font-display text-xl text-relic-300 text-center mb-6 border-b border-steel-700/50 pb-3">{t('home.rankResets')}</h3>
-            <ul className="space-y-4 font-data">
-              <li className="flex justify-between items-center text-sm"><span className="text-silver-300 font-bold"><span className="text-relic-300 mr-2">#1</span> Jugador</span> <span className="text-silver-500 text-xs">50 Resets</span></li>
-              <li className="flex justify-between items-center text-sm"><span className="text-silver-300 font-bold"><span className="text-silver-500 mr-2">#2</span> Jugador</span> <span className="text-silver-500 text-xs">48 Resets</span></li>
-              <li className="flex justify-between items-center text-sm"><span className="text-silver-300 font-bold"><span className="text-arcane-400 mr-2">#3</span> Jugador</span> <span className="text-silver-500 text-xs">45 Resets</span></li>
-            </ul>
-            <button className="w-full mt-6 border border-arcane-500/70 bg-arcane-600/20 px-4 py-2 font-display text-sm tracking-wide text-arcane-300 transition-colors hover:bg-arcane-600/40 uppercase">
-              {t('home.rankBtn')}
-            </button>
-          </div>
-
-          {/* Top Killers */}
-          <div className="border border-steel-700 bg-panel p-6 shadow-inset">
-            <h3 className="font-display text-xl text-relic-300 text-center mb-6 border-b border-steel-700/50 pb-3">{t('home.rankKills')}</h3>
-            <ul className="space-y-4 font-data">
-              <li className="flex justify-between items-center text-sm"><span className="text-silver-300 font-bold"><span className="text-relic-300 mr-2">#1</span> Asesino</span> <span className="text-silver-500 text-xs">150 Kills</span></li>
-              <li className="flex justify-between items-center text-sm"><span className="text-silver-300 font-bold"><span className="text-silver-500 mr-2">#2</span> Asesino</span> <span className="text-silver-500 text-xs">134 Kills</span></li>
-              <li className="flex justify-between items-center text-sm"><span className="text-silver-300 font-bold"><span className="text-arcane-400 mr-2">#3</span> Asesino</span> <span className="text-silver-500 text-xs">98 Kills</span></li>
-            </ul>
-            <button className="w-full mt-6 border border-arcane-500/70 bg-arcane-600/20 px-4 py-2 font-display text-sm tracking-wide text-arcane-300 transition-colors hover:bg-arcane-600/40 uppercase">
-              {t('home.rankBtn')}
-            </button>
-          </div>
-
-          {/* Top Helpers */}
-          <div className="border border-steel-700 bg-panel p-6 shadow-inset">
-            <h3 className="font-display text-xl text-relic-300 text-center mb-6 border-b border-steel-700/50 pb-3">{t('home.rankHelpers')}</h3>
-            <ul className="space-y-4 font-data">
-              <li className="flex justify-between items-center text-sm"><span className="text-silver-300 font-bold"><span className="text-relic-300 mr-2">#1</span> Soporte</span> <span className="text-silver-500 text-xs">800 Tokens</span></li>
-              <li className="flex justify-between items-center text-sm"><span className="text-silver-300 font-bold"><span className="text-silver-500 mr-2">#2</span> Soporte</span> <span className="text-silver-500 text-xs">650 Tokens</span></li>
-              <li className="flex justify-between items-center text-sm"><span className="text-silver-300 font-bold"><span className="text-arcane-400 mr-2">#3</span> Soporte</span> <span className="text-silver-500 text-xs">500 Tokens</span></li>
-            </ul>
-            <button className="w-full mt-6 border border-arcane-500/70 bg-arcane-600/20 px-4 py-2 font-display text-sm tracking-wide text-arcane-300 transition-colors hover:bg-arcane-600/40 uppercase">
-              {t('home.rankBtn')}
-            </button>
-          </div>
-        </div>
-
       </div>
     </section>
   );
 }
 
-function LibrarySection() {
+function CastleSiegeBanner() {
   const { t } = useI18n();
 
   return (
-    <section className="bg-abyss-900 border-y border-steel-700/60 py-16">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <div className="text-center mb-10">
-          <p className="font-data text-xs tracking-widest text-arcane-400 uppercase mb-2">{t('home.librarySub')}</p>
-          <h2 className="font-display text-4xl text-silver-300 mb-4">{t('home.libraryTitle')}</h2>
-          <p className="text-silver-500 max-w-2xl mx-auto text-sm leading-relaxed mb-8">
-            {t('home.libraryDesc')}
-          </p>
-          <a href="/guias" className="inline-flex items-center gap-2 border border-relic-400/80 bg-relic-600/25 px-8 py-4 font-display text-lg tracking-wide text-relic-200 shadow-gold transition-colors hover:bg-relic-600/45 uppercase">
-            📖 {t('home.libraryBtn')}
-          </a>
+    <section className="relative z-10 py-12 bg-gradient-to-r from-[#050a12] via-[#0a182e] to-[#050a12] border-b border-slate-800/80">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 flex flex-col md:flex-row items-center gap-8 justify-between">
+        <div className="text-center md:text-left">
+          <p className="text-xs tracking-[0.2em] text-[#cba135] uppercase font-bold mb-1">{t('home.castleSub')}</p>
+          <h2 className="text-4xl text-white drop-shadow-md mb-2" style={{ fontFamily: "'Cinzel', serif" }}>{t('home.castleTitle')}</h2>
+          <p className="text-sm text-slate-300 max-w-lg">{t('home.castleDesc')}</p>
         </div>
+        <div className="mu-frame bg-[#050a12]/80 p-5 rounded-lg flex items-center gap-6 min-w-[300px] justify-center shadow-[0_0_20px_rgba(203,161,53,0.15)]">
+          <div className="text-center">
+            <span className="block text-[10px] text-slate-400 uppercase tracking-widest mb-1">{t('home.castleSovereign')}</span>
+            <span className="block text-2xl text-[#fce893] font-bold" style={{ fontFamily: "'Cinzel', serif" }}>{t('home.castleNone')}</span>
+            <span className="block text-xs text-[#51e2f5] mt-1">{t('home.castleNext')}</span>
+          </div>
+          <div className="h-12 w-px bg-slate-700"></div>
+          <div className="text-center">
+            <img src="https://via.placeholder.com/50/1a1a1a/cba135?text=LOGO" alt="Guild Logo" className="rounded shadow-md border border-[#cba135]" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LiveRankings() {
+  const { t } = useI18n();
+
+  const tops = [
+    { title: t('home.rankResets'), players: [{name: 'Luzio', val: '50 Resets'}, {name: 'Aethel', val: '48 Resets'}, {name: 'Knight', val: '45 Resets'}] },
+    { title: t('home.rankKills'), players: [{name: 'Asesino', val: '150 Kills'}, {name: 'DarkLord', val: '134 Kills'}, {name: 'PVPGod', val: '98 Kills'}] },
+    { title: t('home.rankHelpers'), players: [{name: 'SupportElf', val: '800 Tokens'}, {name: 'Healer', val: '650 Tokens'}, {name: 'Guia', val: '500 Tokens'}] },
+  ];
+
+  return (
+    <section className="relative z-10 py-16 bg-[#050a12]/90 backdrop-blur-md border-b border-slate-800/80">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl text-[#fce893]" style={{ fontFamily: "'Cinzel', serif" }}>{t('home.rankTitle')}</h2>
+          <p className="font-data text-xs tracking-widest text-slate-400 mt-2">{t('home.rankSub')}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {tops.map((top, idx) => (
+            <div key={idx} className="mu-frame bg-[#0a111c] p-5 rounded border border-[#102542]">
+              <h3 className="text-center text-[#51e2f5] mb-4 text-lg border-b border-slate-800 pb-2" style={{ fontFamily: "'Cinzel', serif" }}>{top.title}</h3>
+              <ul className="space-y-3">
+                {top.players.map((p, i) => (
+                  <li key={i} className="flex justify-between items-center text-sm p-2 hover:bg-slate-800/50 rounded transition-colors">
+                    <span className="flex items-center gap-2 text-slate-200">
+                      <span className={`font-bold ${i === 0 ? 'text-[#fce893]' : i === 1 ? 'text-slate-300' : 'text-amber-700'}`}>#{i+1}</span> {p.name}
+                    </span>
+                    <span className="text-xs text-slate-400 font-mono">{p.val}</span>
+                  </li>
+                ))}
+              </ul>
+              <button className="w-full mt-4 py-2 text-xs text-slate-400 hover:text-white border border-slate-700 hover:border-[#51e2f5] rounded transition-all">{t('home.rankBtn')}</button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DropGuideBanner() {
+  const { t } = useI18n();
+
+  return (
+    <section className="relative z-10 py-16 bg-[#0a111c] border-y border-[#102542] flex items-center justify-center">
+      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 h-[200px] w-[300px] rounded-full bg-[#fce893]/5 blur-[80px] pointer-events-none" />
+      
+      <div className="relative mx-auto max-w-4xl px-4 text-center">
+        <p className="font-data text-xs tracking-[0.3em] text-[#51e2f5] uppercase font-bold mb-3">
+          {t('home.librarySub')}
+        </p>
+        <h2 className="text-4xl sm:text-5xl text-white drop-shadow-md mb-6" style={{ fontFamily: "'Cinzel', serif" }}>
+          {t('home.libraryTitle')}
+        </h2>
+        <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+          {t('home.libraryDesc')}
+        </p>
+        
+        <a 
+          href="/guias" 
+          className="inline-block px-8 py-3 rounded border border-[#fce893] text-[#fce893] hover:bg-[#fce893] hover:text-[#050a12] font-black tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(252,232,147,0.1)] hover:shadow-[0_0_20px_rgba(252,232,147,0.4)]"
+        >
+          📖 {t('home.libraryBtn')}
+        </a>
       </div>
     </section>
   );
@@ -174,15 +238,16 @@ function LibrarySection() {
 export default function HomePage() {
   return (
     <I18nProvider initialLang="es">
-      <div className="min-h-screen bg-abyss-900 font-body text-silver-400 antialiased">
+      <div className="min-h-screen font-body text-slate-300 antialiased bg-[url('/background.jpg')] bg-cover bg-center bg-fixed bg-no-repeat bg-[#050a12]">
         <Header />
         <main>
           <Hero />
+          <ServerFeatures />
+          <CastleSiegeBanner />
+          <LiveRankings />
           <EventTimers />
-          <NewsFeed />
-          <CastleSiegeAndRanking />
+          <DropGuideBanner />
           <TokenEconomy />
-          <LibrarySection />
           <DownloadCenter />
         </main>
         <Footer />
