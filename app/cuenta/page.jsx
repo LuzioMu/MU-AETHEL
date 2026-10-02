@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { I18nProvider } from '../../lib/i18n';
+import { I18nProvider, useI18n } from '../../lib/i18n';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
@@ -26,6 +26,7 @@ const getGuildRank = (statusCode) => {
 
 function CuentaContent() {
   const router = useRouter();
+  const { t } = useI18n(); // Usamos el sistema de idiomas
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -44,10 +45,10 @@ function CuentaContent() {
 
   const handleLogout = async () => {
     await fetch('/api/auth/logout', { method: 'POST' });
-    window.location.href = '/'; // Forzamos recarga para limpiar el Header
+    window.location.href = '/'; 
   };
 
-  if (loading) return <main className="min-h-screen flex items-center justify-center bg-[#050a12] text-[#51e2f5]">Cargando Reino...</main>;
+  if (loading) return <main className="min-h-screen flex items-center justify-center bg-[#050a12] text-[#51e2f5]">...</main>;
 
   return (
     <main className="relative z-10 py-16 bg-[#050a12]/90 backdrop-blur-md min-h-screen">
@@ -57,12 +58,12 @@ function CuentaContent() {
         <div className="flex flex-col md:flex-row justify-between items-center bg-[#0a111c] border border-[#102542] p-6 rounded-lg shadow-xl mb-8">
           <div>
             <h1 className="text-3xl text-[#fce893] mb-1" style={{ fontFamily: "'Cinzel', serif" }}>
-              Armería de <span className="text-white">{profile.username}</span>
+              {t('dash.armory')} <span className="text-white">{profile.username}</span>
             </h1>
-            <p className="text-sm text-slate-400">Gestiona tu imperio, guild y recursos.</p>
+            <p className="text-sm text-slate-400">{t('dash.subtitle')}</p>
           </div>
           <button onClick={handleLogout} className="mt-4 md:mt-0 px-6 py-2 rounded border border-red-900/50 text-red-400 hover:bg-red-900/20 transition-all text-xs font-bold tracking-widest uppercase">
-            Cerrar Sesión
+            {t('dash.logout')}
           </button>
         </div>
 
@@ -73,25 +74,25 @@ function CuentaContent() {
           <div className="lg:col-span-2 bg-[#10567e]/20 border border-[#167d9e] p-6 rounded flex items-center gap-6 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#167d9e] opacity-10 blur-[80px]"></div>
             
-            <div className="w-24 h-24 bg-[#e67e22] border-2 border-[#d35400] shadow-[0_0_15px_rgba(230,126,34,0.4)] rounded flex items-center justify-center">
+            <div className="w-24 h-24 bg-[#e67e22] border-2 border-[#d35400] shadow-[0_0_15px_rgba(230,126,34,0.4)] rounded flex items-center justify-center shrink-0">
                <span className="text-white/50 text-xs text-center font-bold">Logo<br/>Guild</span>
             </div>
             
             <div className="flex-1">
-              <h2 className="text-[#51e2f5] text-xs font-bold tracking-widest uppercase mb-1">Ventana Guild</h2>
+              <h2 className="text-[#51e2f5] text-xs font-bold tracking-widest uppercase mb-1">{t('dash.guildWindow')}</h2>
               {profile.guild ? (
                 <>
                   <h3 className="text-2xl text-white font-black uppercase mb-1">{profile.guild.G_Name}</h3>
                   <p className="text-sm text-[#fce893] font-bold uppercase mb-1">{getGuildRank(profile.guild.G_Status)}</p>
-                  <p className="text-xs text-slate-400 uppercase mb-4">Estado de Loren: <span className="text-white">Sin Castillo</span></p>
+                  <p className="text-xs text-slate-400 uppercase mb-4">{t('dash.state')}: <span className="text-white">{t('dash.nocastle')}</span></p>
                   <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
-                    <span>Miembros: 50/50</span> | <span>Online: 20/50</span> <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_5px_#22c55e]"></span>
+                    <span>{t('dash.members')}: 50/50</span> | <span>{t('dash.online')}: 20/50</span> <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_5px_#22c55e]"></span>
                   </div>
                 </>
               ) : (
                 <div className="mt-4 text-slate-400">
-                  <p className="text-lg font-bold text-white mb-1">Sin Gremio</p>
-                  <p className="text-xs">Tus personajes no pertenecen a ningún Guild activo.</p>
+                  <p className="text-lg font-bold text-white mb-1">{t('dash.noGuild')}</p>
+                  <p className="text-xs">{t('dash.noGuildDesc')}</p>
                 </div>
               )}
             </div>
@@ -106,14 +107,13 @@ function CuentaContent() {
                 <img src="/moneda-honor.png" alt="Honor Token" className="w-14 h-14 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] group-hover:scale-110 transition-transform" />
                 <div>
                   <p className="text-[10px] text-white uppercase tracking-widest font-bold">Honor Tokens</p>
-                  {/* El '?' evita que la página crashee si la API demora en actualizarse */}
                   <p className="text-2xl text-white font-mono leading-none">{profile.tokens?.honor?.balance || 0}</p>
                 </div>
               </div>
               <div className="text-right">
-                <span className="text-[9px] text-slate-400 uppercase tracking-widest block mb-1.5">Posición Global</span>
+                <span className="text-[9px] text-slate-400 uppercase tracking-widest block mb-1.5">{t('dash.rank')}</span>
                 <span className="inline-block bg-[#050a12] border border-slate-700 text-slate-300 px-3 py-1 rounded text-xs font-bold shadow-inner">
-                  {profile.tokens?.honor?.rank || 'Sin rango'}
+                  {profile.tokens?.honor?.rank || t('dash.unranked')}
                 </span>
               </div>
             </div>
@@ -128,9 +128,9 @@ function CuentaContent() {
                 </div>
               </div>
               <div className="text-right">
-                <span className="text-[9px] text-slate-400 uppercase tracking-widest block mb-1.5">Posición Global</span>
+                <span className="text-[9px] text-slate-400 uppercase tracking-widest block mb-1.5">{t('dash.rank')}</span>
                 <span className="inline-block bg-[#050a12] border border-slate-700 text-slate-300 px-3 py-1 rounded text-xs font-bold shadow-inner">
-                  {profile.tokens?.helper?.rank || 'Sin rango'}
+                  {profile.tokens?.helper?.rank || t('dash.unranked')}
                 </span>
               </div>
             </div>
@@ -140,7 +140,7 @@ function CuentaContent() {
 
         {/* Lista de Personajes (Formato Fila) */}
         <h2 className="text-xl text-[#51e2f5] mb-4 border-b border-[#102542] pb-2 uppercase tracking-widest font-bold">
-          Tus Personajes
+          {t('dash.chars')}
         </h2>
         
         {profile.characters && profile.characters.length > 0 ? (
@@ -157,15 +157,15 @@ function CuentaContent() {
                 {/* Stats y Zen */}
                 <div className="w-full md:w-1/4 flex justify-between md:justify-around text-center">
                   <div>
-                    <p className="text-[10px] text-slate-500 uppercase">Nivel</p>
+                    <p className="text-[10px] text-slate-500 uppercase">{t('dash.lvl')}</p>
                     <p className="text-white font-mono font-bold">{char.cLevel}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-500 uppercase">Resets</p>
+                    <p className="text-[10px] text-slate-500 uppercase">{t('dash.resets')}</p>
                     <p className="text-[#fce893] font-mono font-bold">{char.ResetCount}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-500 uppercase">Zen</p>
+                    <p className="text-[10px] text-slate-500 uppercase">{t('dash.zen')}</p>
                     <p className="text-green-400 font-mono font-bold">{(char.Money || 0).toLocaleString()}</p>
                   </div>
                 </div>
@@ -173,7 +173,7 @@ function CuentaContent() {
                 {/* Barra de Experiencia */}
                 <div className="w-full md:w-1/3">
                   <div className="flex justify-between text-[10px] text-slate-400 uppercase mb-1">
-                    <span>Experiencia</span>
+                    <span>{t('dash.exp')}</span>
                     <span className="font-mono">{char.Experience ? char.Experience.toLocaleString() : 0} XP</span>
                   </div>
                   <div className="w-full bg-[#050a12] h-2 rounded-full border border-slate-800 overflow-hidden">
@@ -187,7 +187,7 @@ function CuentaContent() {
                     <div className="border border-slate-800"></div><div className="border border-slate-800 bg-slate-900"></div><div className="border border-slate-800"></div>
                     <div className="border border-slate-800 bg-slate-900"></div><div className="border border-slate-800 bg-slate-900"></div><div className="border border-slate-800 bg-slate-900"></div>
                   </div>
-                  <p className="text-[8px] text-slate-500 uppercase mt-1">Equipo próximamente</p>
+                  <p className="text-[8px] text-slate-500 uppercase mt-1">{t('dash.soon')}</p>
                 </div>
 
               </div>
@@ -195,7 +195,7 @@ function CuentaContent() {
           </div>
         ) : (
           <div className="bg-[#0a111c] border border-dashed border-[#102542] p-10 text-center rounded">
-            <p className="text-slate-500">Aún no has creado ningún personaje en el juego.</p>
+            <p className="text-slate-500">{t('dash.noChars')}</p>
           </div>
         )}
 
