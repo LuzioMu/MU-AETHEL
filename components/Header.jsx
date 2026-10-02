@@ -1,7 +1,7 @@
 'use client';
 
 // =========================================================================
-// MU AETHEL - Encabezado / Navegación (Diseño Congelado y Glow Fijo)
+// MU AETHEL - Encabezado / Navegación (Diseño Congelado y Fixes Visuales)
 // =========================================================================
 
 import { useState, useEffect } from 'react';
@@ -63,26 +63,36 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b-2 border-[#102542] bg-gradient-to-r from-[#050a12]/95 via-[#0a182e]/95 to-[#050a12]/95 backdrop-blur-md shadow-lg shadow-[#000000]/50">
       <div className="mx-auto flex w-full max-w-[1400px] items-center px-4 py-3 sm:px-6">
         
-        {/* LADO IZQUIERDO: LOGO Y NOMBRE (Ocupa un tercio) */}
+        {/* LADO IZQUIERDO: LOGO Y NOMBRE */}
         <div className="flex-1 basis-0 flex justify-start">
           <a href="/#inicio" className="flex items-center gap-3 shrink-0">
             <img src="/logo.png" alt="Mu Aethel" className="w-12 h-12 object-contain drop-shadow-[0_0_8px_rgba(252,232,147,0.3)] hover:scale-105 transition-transform" />
-            <span className="text-2xl font-black tracking-widest text-[#fce893] drop-shadow-md hidden xl:block" style={{ fontFamily: "'Cinzel', serif" }}>
+            <span className="text-2xl font-black tracking-widest text-[#fce893] drop-shadow-[0_0_10px_rgba(252,232,147,0.6)] hidden xl:block" style={{ fontFamily: "'Cinzel', serif" }}>
               Mu Aethel
             </span>
           </a>
         </div>
 
-        {/* CENTRO: NAVEGACIÓN (Ocupa el centro exacto) */}
+        {/* CENTRO: NAVEGACIÓN */}
         <nav className="hidden lg:flex flex-none justify-center items-center gap-8 text-[15px] font-bold tracking-wider">
-          <a href="/#inicio" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">{t('nav.home') || 'Inicio'}</a>
-          <a href="/noticias" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">{t('nav.news') || 'Noticias'}</a>
-          <a href="/#economia" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">{t('nav.economy') || 'Economía'}</a>
-          <a href="/#descargas" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">{t('nav.download') || 'Descargas'}</a>
-          <a href="/guias" className="text-[#fce893] drop-shadow-[0_0_6px_rgba(252,232,147,0.5)] hover:text-white hover:drop-shadow-[0_0_10px_rgba(252,232,147,0.8)] hover:-translate-y-0.5 transition-all">{t('nav.guide') || 'Guías'}</a>
+          <a href="/#inicio" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">
+            {t('nav.home') === 'nav.home' ? 'Inicio' : t('nav.home')}
+          </a>
+          <a href="/noticias" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">
+            {t('nav.news') === 'nav.news' ? 'Noticias' : t('nav.news')}
+          </a>
+          <a href="/#economia" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">
+            {t('nav.economy') === 'nav.economy' ? 'Economía' : t('nav.economy')}
+          </a>
+          <a href="/#descargas" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">
+            {t('nav.downloads') === 'nav.downloads' ? 'Descargas' : t('nav.downloads')}
+          </a>
+          <a href="/guias" className="text-[#fce893] drop-shadow-[0_0_6px_rgba(252,232,147,0.5)] hover:text-white hover:drop-shadow-[0_0_10px_rgba(252,232,147,0.8)] hover:-translate-y-0.5 transition-all">
+            {t('nav.guide') === 'nav.guide' ? 'Guías' : t('nav.guide')}
+          </a>
         </nav>
 
-        {/* LADO DERECHO: BANDERAS Y CUENTA (Ocupa el tercio derecho, inamovible) */}
+        {/* LADO DERECHO: BANDERAS Y CUENTA */}
         <div className="flex-1 basis-0 flex justify-end items-center gap-6">
           
           <div className="flex items-center gap-2">
@@ -112,13 +122,13 @@ export default function Header() {
           ) : (
             <>
               <a href="/login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">
-                {t('nav.login') || 'Ingresar'}
+                {t('nav.login') === 'nav.login' ? 'Ingresar' : t('nav.login')}
               </a>
               <a 
                 href="/registro" 
-                className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#fce893] to-[#cba135] border border-[#fff3b0] text-[#050a12] font-black text-sm tracking-wide shadow-[0_0_15px_rgba(203,161,53,0.4)] hover:shadow-[0_0_20px_rgba(252,232,147,0.7)] hover:scale-105 transition-all"
+                className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#fce893] to-[#cba135] border border-[#fff3b0] !text-[#050a12] font-black text-sm tracking-wide shadow-[0_0_15px_rgba(203,161,53,0.4)] hover:shadow-[0_0_20px_rgba(252,232,147,0.7)] hover:scale-105 transition-all"
               >
-                {t('nav.register') || 'Crear Cuenta'}
+                {t('nav.register') === 'nav.register' ? 'Crear Cuenta' : t('nav.register')}
               </a>
             </>
           )}
