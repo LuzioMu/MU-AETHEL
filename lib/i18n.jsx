@@ -9,7 +9,7 @@ import React, { createContext, useContext, useState } from 'react';
 const translations = {
   es: {
     meta: { title: 'Mu Aethel - Season 6 Episode 3', tagline: 'SERVIDOR SLOW / MEDIUM' },
-    nav: { home: 'Inicio', news: 'Noticias', economy: 'Economía', downloads: 'Descargas', playNow: 'Jugar ahora' },
+    nav: { home: 'Inicio', news: 'Noticias', economy: 'Economía', downloads: 'Descargas', playNow: 'Jugar ahora', guide: 'Guías', register: 'Crear Cuenta', login: 'Ingresar' },
     hero: {
       title: 'MU AETHEL', subtitle: 'SEASON 6 EPISODE 3', claim: 'Una experiencia clásica donde el poder se gana en el juego.',
       badge1: '🛡️ 100% Play-to-Earn', badge2: '⚔️ Cero Ventajas Pagas', badge3: '💎 Economía por Mérito',
@@ -34,6 +34,7 @@ const translations = {
       castleSiege: 'Castle Siege', descCastleSiege: 'Batalla épica por el castillo de Loren',
     },
     news: { title: 'Últimas Novedades', subtitle: 'Mantente al tanto de las actualizaciones del servidor', all: 'Todo', categories: { maintenance: 'Mantenimiento', event: 'Evento', update: 'Actualización', news: 'Noticia' }, readMore: 'Leer noticia completa' },
+    newsPage: { title: 'Novedades del Reino', subtitle: 'Mantente al tanto de actualizaciones, eventos y transparencia.', selectArticle: 'Selecciona una noticia de la lista para leer los detalles.' },
     economy: {
       title: 'Economía Play-to-Earn', subtitle: 'Dos monedas internas. Cero dinero real. Una premia el combate, la otra premia ayudar.',
       noVipTitle: 'Sin sistema VIP ni ventajas vendidas', noVipBody: 'No vendemos experiencia, drop ni equipamiento. Nadie puede pagar para superarte: si alguien tiene mejor equipo, jugó más o jugó mejor.',
@@ -81,11 +82,18 @@ const translations = {
       captcha: 'Validación de Seguridad',
       rulesConfirm: 'Acepto las Reglas del Servidor y la Política de Privacidad',
       userHelp: 'Entre 4 y 10 caracteres. Se usará para entrar al juego.'
+    },
+    dash: {
+      armory: 'Armería de', subtitle: 'Gestiona tu imperio, guild y recursos.', logout: 'Cerrar Sesión', 
+      guildWindow: 'Ventana Guild', noGuild: 'Sin Gremio', noGuildDesc: 'Tus personajes no pertenecen a ningún Guild activo.', 
+      rank: 'Posición Global', unranked: 'Sin rango', chars: 'Tus Personajes', lvl: 'Nivel', resets: 'Resets', 
+      zen: 'Zen', exp: 'Experiencia', noChars: 'Aún no has creado ningún personaje.', soon: 'Equipo próximamente', 
+      members: 'Miembros', online: 'Online', state: 'Estado de Loren', nocastle: 'Sin Castillo'
     }
   },
   en: {
     meta: { title: 'Mu Aethel - Season 6 Episode 3', tagline: 'SLOW / MEDIUM SERVER' },
-    nav: { home: 'Home', news: 'News', economy: 'Economy', downloads: 'Downloads', playNow: 'Play Now' },
+    nav: { home: 'Home', news: 'News', economy: 'Economy', downloads: 'Downloads', playNow: 'Play Now', guide: 'Guides', register: 'Sign Up', login: 'Login' },
     hero: {
       title: 'MU AETHEL', subtitle: 'SEASON 6 EPISODE 3', claim: 'A classic experience where power is earned strictly in-game.',
       badge1: '🛡️ 100% Play-to-Earn', badge2: '⚔️ Zero Paid Perks', badge3: '💎 Merit-Based Economy',
@@ -110,6 +118,7 @@ const translations = {
       castleSiege: 'Castle Siege', descCastleSiege: 'Epic battle for the Valley of Loren',
     },
     news: { title: 'Latest News', subtitle: 'Stay up to date with server updates', all: 'All', categories: { maintenance: 'Maintenance', event: 'Event', update: 'Update', news: 'News' }, readMore: 'Read full article' },
+    newsPage: { title: 'Realm News', subtitle: 'Stay updated on patches, events, and transparency.', selectArticle: 'Select an article from the list to read the details.' },
     economy: {
       title: 'Play-to-Earn Economy', subtitle: 'Two internal tokens. Zero real money. One rewards combat, the other rewards helping.',
       noVipTitle: 'No VIP System or Paid Perks', noVipBody: 'We do not sell experience, drops, or gear. Nobody can pay to win: better gear means more effort or better strategy.',
@@ -157,11 +166,18 @@ const translations = {
       captcha: 'Security Validation',
       rulesConfirm: 'I accept the Server Rules and Privacy Policy',
       userHelp: 'Between 4 and 10 characters. Used to log into the game.'
+    },
+    dash: {
+      armory: 'Armory of', subtitle: 'Manage your empire, guild and resources.', logout: 'Logout', 
+      guildWindow: 'Guild Window', noGuild: 'No Guild', noGuildDesc: 'Your characters do not belong to an active Guild.', 
+      rank: 'Global Rank', unranked: 'Unranked', chars: 'Your Characters', lvl: 'Level', resets: 'Resets', 
+      zen: 'Zen', exp: 'Experience', noChars: 'You have not created any characters yet.', soon: 'Equipment coming soon', 
+      members: 'Members', online: 'Online', state: 'Loren Status', nocastle: 'No Castle'
     }
   },
   pt: {
     meta: { title: 'Mu Aethel - Season 6 Episode 3', tagline: 'SERVIDOR SLOW / MEDIUM' },
-    nav: { home: 'Início', news: 'Notícias', economy: 'Economia', downloads: 'Downloads', playNow: 'Jogar Agora' },
+    nav: { home: 'Início', news: 'Notícias', economy: 'Economia', downloads: 'Downloads', playNow: 'Jogar Agora', guide: 'Guias', register: 'Criar Conta', login: 'Entrar' },
     hero: {
       title: 'MU AETHEL', subtitle: 'SEASON 6 EPISODE 3', claim: 'Uma experiência clássica onde o poder é conquistado no jogo.',
       badge1: '🛡️ 100% Play-to-Earn', badge2: '⚔️ Sem Vantagens Pagas', badge3: '💎 Economia por Mérito',
@@ -186,6 +202,7 @@ const translations = {
       castleSiege: 'Castle Siege', descCastleSiege: 'Batalha épica pelo Vale de Loren',
     },
     news: { title: 'Últimas Notícias', subtitle: 'Fique por dentro das atualizações do servidor', all: 'Tudo', categories: { maintenance: 'Manutenção', event: 'Evento', update: 'Atualização', news: 'Notícia' }, readMore: 'Ler artigo completo' },
+    newsPage: { title: 'Notícias do Reino', subtitle: 'Fique por dentro das atualizações, eventos e transparência.', selectArticle: 'Selecione uma notícia na lista para ler os detalhes.' },
     economy: {
       title: 'Economia Play-to-Earn', subtitle: 'Duas moedas internas. Zero dinheiro real. Uma premia o combate, a outra premia ajudar.',
       noVipTitle: 'Sem Sistema VIP ou Vantagens Pagas', noVipBody: 'Não vendemos experiência, drops ou itens. Ninguém pode pagar para vencer.',
@@ -233,6 +250,13 @@ const translations = {
       captcha: 'Validação de Segurança',
       rulesConfirm: 'Eu aceito as Regras do Servidor e Política de Privacidade',
       userHelp: 'Entre 4 e 10 caracteres. Usado para entrar no jogo.'
+    },
+    dash: {
+      armory: 'Arsenal de', subtitle: 'Gerencie seu império, guild e recursos.', logout: 'Sair', 
+      guildWindow: 'Janela da Guild', noGuild: 'Sem Guild', noGuildDesc: 'Seus personagens não pertencem a uma Guild ativa.', 
+      rank: 'Posição Global', unranked: 'Sem rank', chars: 'Seus Personagens', lvl: 'Nível', resets: 'Resets', 
+      zen: 'Zen', exp: 'Experiência', noChars: 'Você ainda não criou nenhum personagem.', soon: 'Equipamento em breve', 
+      members: 'Membros', online: 'Online', state: 'Estado de Loren', nocastle: 'Sem Castelo'
     }
   },
 };
