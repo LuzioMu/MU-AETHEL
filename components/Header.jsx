@@ -75,9 +75,10 @@ export default function Header() {
         {/* CENTRO: NAVEGACIÓN CON RUTAS ABSOLUTAS */}
         <nav className="hidden lg:flex items-center gap-8 text-[15px] font-bold tracking-wider mx-auto">
           <a href="/#inicio" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.home') || 'Inicio'}</a>
-          <a href="/#noticias" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.news') || 'Noticias'}</a>
+          <a href="/noticias" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.news') || 'Noticias'}</a>
           <a href="/#economia" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.economy') || 'Economía'}</a>
           <a href="/#descargas" className="text-white hover:text-[#51e2f5] hover:-translate-y-0.5 transition-all drop-shadow-sm">{t('nav.downloads') || 'Descargas'}</a>
+          <a href="/guias" className="text-[#fce893] hover:text-white hover:-translate-y-0.5 transition-all drop-shadow-[0_0_5px_rgba(252,232,147,0.5)]">{t('nav.guide') || 'Guías'}</a>
         </nav>
 
         {/* LADO DERECHO: BANDERAS Y CUENTA */}
@@ -114,11 +115,11 @@ export default function Header() {
                 href="/registro" 
                 className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#fce893] to-[#cba135] border border-[#fff3b0] text-[#050a12] font-black text-sm tracking-wide shadow-[0_0_15px_rgba(203,161,53,0.4)] hover:shadow-[0_0_20px_rgba(252,232,147,0.7)] hover:scale-105 transition-all"
               >
-                Crear Cuenta
+                {t('nav.register') || 'Crear Cuenta'}
               </a>
               
               <a href="/login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">
-                Ingresar
+                {t('nav.login') || 'Ingresar'}
               </a>
             </>
           )}
