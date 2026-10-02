@@ -1,7 +1,7 @@
 'use client';
 
 // ============================================================================
-//  MU AETHEL - Página principal (Solucionada)
+//  MU AETHEL - Página principal (Segura y 100% Traducida)
 // ============================================================================
 
 import { I18nProvider, useI18n } from '../lib/i18n';
@@ -30,22 +30,22 @@ function Hero() {
 
       <div className="relative z-10 mx-auto max-w-5xl px-4 py-12 text-center sm:px-6 lg:py-16 flex flex-col items-center">
         <p className="font-data text-xs tracking-[0.3em] text-[#51e2f5] uppercase font-semibold">
-          {t('meta.tagline')}
+          {t('meta.tagline') || 'Season 6 · Sin VIP · Todo se gana jugando'}
         </p>
 
         <h1 
           className="mt-3 text-6xl sm:text-8xl font-display font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#fff3b0] via-[#fce893] to-[#cba135] drop-shadow-[0_4px_12px_rgba(252,232,147,0.2)]"
           style={{ fontFamily: "'Cinzel', serif" }}
         >
-          {t('hero.title')}
+          {t('hero.title') || 'Mu Aethel'}
         </h1>
 
         <p className="mt-2 text-lg sm:text-xl font-data tracking-widest text-white uppercase drop-shadow-md">
-          {t('hero.subtitle')}
+          {t('hero.season') || 'Season 6 Episode 3'}
         </p>
 
         <p className="mt-4 max-w-xl text-base text-slate-200 mx-auto leading-relaxed">
-          {t('hero.claim')}
+          {t('hero.claim') || 'Acá nadie compra su poder. Se lo gana.'}
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3 sm:gap-4 text-xs font-bold">
@@ -61,8 +61,8 @@ function Hero() {
         </div>
 
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <a href="#descargas" className="mu-button mu-button-gold px-8 py-3 rounded text-[#050a12] font-black tracking-wide shadow-[0_0_15px_rgba(252,232,147,0.6)] hover:scale-105 transition-transform">
-            {t('hero.ctaPrimary')}
+          <a href="#descargas" className="mu-button mu-button-gold px-8 py-3 rounded text-[#050a12] font-black tracking-wide shadow-[0_0_15px_rgba(252,232,147,0.6)] hover:scale-105 transition-transform uppercase">
+            {t('hero.ctaPrimary') || 'Descargar Cliente'}
           </a>
         </div>
 
@@ -142,20 +142,19 @@ function ServerFeatures() {
 
 function CastleSiegeBanner() {
   const { t } = useI18n();
-
   return (
     <section className="relative z-10 py-12 bg-gradient-to-r from-[#050a12] via-[#0a182e] to-[#050a12] border-b border-slate-800/80">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 flex flex-col md:flex-row items-center gap-8 justify-between">
         <div className="text-center md:text-left">
-          <p className="text-xs tracking-[0.2em] text-[#cba135] uppercase font-bold mb-1">{t('home.castleSub')}</p>
-          <h2 className="text-4xl text-white drop-shadow-md mb-2" style={{ fontFamily: "'Cinzel', serif" }}>{t('home.castleTitle')}</h2>
-          <p className="text-sm text-slate-300 max-w-lg">{t('home.castleDesc')}</p>
+          <p className="text-xs tracking-[0.2em] text-[#cba135] uppercase font-bold mb-1">{t('home.castleSub') || 'El Trono del Reino'}</p>
+          <h2 className="text-4xl text-white drop-shadow-md mb-2" style={{ fontFamily: "'Cinzel', serif" }}>{t('home.castleTitle') || 'Castle Siege'}</h2>
+          <p className="text-sm text-slate-300 max-w-lg">{t('home.castleDesc') || 'La guerra de gremios más importante de Mu Online. El ganador controla el Valle de Loren y los impuestos del servidor.'}</p>
         </div>
         <div className="mu-frame bg-[#050a12]/80 p-5 rounded-lg flex items-center gap-6 min-w-[300px] justify-center shadow-[0_0_20px_rgba(203,161,53,0.15)]">
           <div className="text-center">
-            <span className="block text-[10px] text-slate-400 uppercase tracking-widest mb-1">{t('home.castleSovereign')}</span>
-            <span className="block text-2xl text-[#fce893] font-bold" style={{ fontFamily: "'Cinzel', serif" }}>{t('home.castleNone')}</span>
-            <span className="block text-xs text-[#51e2f5] mt-1">{t('home.castleNext')}</span>
+            <span className="block text-[10px] text-slate-400 uppercase tracking-widest mb-1">{t('home.castleSovereign') || 'Gremio Soberano'}</span>
+            <span className="block text-2xl text-[#fce893] font-bold uppercase" style={{ fontFamily: "'Cinzel', serif" }}>{t('home.castleNone') || 'NINGUNO'}</span>
+            <span className="block text-xs text-[#51e2f5] mt-1">{t('home.castleNext') || 'Próxima batalla: Domingo 20:00'}</span>
           </div>
           <div className="h-12 w-px bg-slate-700"></div>
           <div className="text-center">
@@ -171,22 +170,22 @@ function LiveRankings() {
   const { t } = useI18n();
 
   const tops = [
-    { title: t('home.rankResets'), players: [{name: 'Luzio', val: '50 Resets'}, {name: 'Aethel', val: '48 Resets'}, {name: 'Knight', val: '45 Resets'}] },
-    { title: t('home.rankKills'), players: [{name: 'Asesino', val: '150 Kills'}, {name: 'DarkLord', val: '134 Kills'}, {name: 'PVPGod', val: '98 Kills'}] },
-    { title: t('home.rankHelpers'), players: [{name: 'SupportElf', val: '800 Tokens'}, {name: 'Healer', val: '650 Tokens'}, {name: 'Guia', val: '500 Tokens'}] },
+    { title: t('home.rankResets') || 'Top Resets', players: [{name: 'Luzio', val: '50 Resets'}, {name: 'Aethel', val: '48 Resets'}, {name: 'Knight', val: '45 Resets'}] },
+    { title: t('home.rankKills') || 'Top Killers (Honor)', players: [{name: 'Asesino', val: '150 Kills'}, {name: 'DarkLord', val: '134 Kills'}, {name: 'PVPGod', val: '98 Kills'}] },
+    { title: t('home.rankHelpers') || 'Top Helpers', players: [{name: 'SupportElf', val: '800 Tokens'}, {name: 'Healer', val: '650 Tokens'}, {name: 'Guia', val: '500 Tokens'}] },
   ];
 
   return (
     <section className="relative z-10 py-16 bg-[#050a12]/90 backdrop-blur-md border-b border-slate-800/80">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl text-[#fce893]" style={{ fontFamily: "'Cinzel', serif" }}>{t('home.rankTitle')}</h2>
-          <p className="font-data text-xs tracking-widest text-slate-400 mt-2">{t('home.rankSub')}</p>
+          <h2 className="text-3xl sm:text-4xl text-[#fce893] uppercase" style={{ fontFamily: "'Cinzel', serif" }}>{t('home.rankTitle') || 'Salón de la Fama'}</h2>
+          <p className="font-data text-xs tracking-widest text-slate-400 mt-2 uppercase">{t('home.rankSub') || 'RANKINGS EN TIEMPO REAL'}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {tops.map((top, idx) => (
             <div key={idx} className="mu-frame bg-[#0a111c] p-5 rounded border border-[#102542]">
-              <h3 className="text-center text-[#51e2f5] mb-4 text-lg border-b border-slate-800 pb-2" style={{ fontFamily: "'Cinzel', serif" }}>{top.title}</h3>
+              <h3 className="text-center text-[#51e2f5] mb-4 text-lg border-b border-slate-800 pb-2 uppercase" style={{ fontFamily: "'Cinzel', serif" }}>{top.title}</h3>
               <ul className="space-y-3">
                 {top.players.map((p, i) => (
                   <li key={i} className="flex justify-between items-center text-sm p-2 hover:bg-slate-800/50 rounded transition-colors">
@@ -197,7 +196,7 @@ function LiveRankings() {
                   </li>
                 ))}
               </ul>
-              <button className="w-full mt-4 py-2 text-xs text-slate-400 hover:text-white border border-slate-700 hover:border-[#51e2f5] rounded transition-all">{t('home.rankBtn')}</button>
+              <button className="w-full mt-4 py-2 text-xs text-slate-400 hover:text-white border border-slate-700 hover:border-[#51e2f5] rounded transition-all uppercase">{t('home.rankBtn') || 'Ver Ranking Completo'}</button>
             </div>
           ))}
         </div>
@@ -215,20 +214,20 @@ function DropGuideBanner() {
       
       <div className="relative mx-auto max-w-4xl px-4 text-center">
         <p className="font-data text-xs tracking-[0.3em] text-[#51e2f5] uppercase font-bold mb-3">
-          {t('home.librarySub')}
+          {t('home.librarySub') || 'Todo el conocimiento en un solo lugar'}
         </p>
-        <h2 className="text-4xl sm:text-5xl text-white drop-shadow-md mb-6" style={{ fontFamily: "'Cinzel', serif" }}>
-          {t('home.libraryTitle')}
+        <h2 className="text-4xl sm:text-5xl text-white drop-shadow-md mb-6 uppercase" style={{ fontFamily: "'Cinzel', serif" }}>
+          {t('home.libraryTitle') || 'La Gran Biblioteca de Aethel'}
         </h2>
         <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
-          {t('home.libraryDesc')}
+          {t('home.libraryDesc') || '¿No sabés dónde cae la Jewel of Bless? ¿Querés armar tus Alas nivel 3 y te faltan materiales? Ingresá a nuestra Wiki oficial para ver todos los mapas, spots, niveles de monstruos y recompensas de los Jefes.'}
         </p>
         
         <a 
           href="/guias" 
           className="inline-block px-8 py-3 rounded border border-[#fce893] text-[#fce893] hover:bg-[#fce893] hover:text-[#050a12] font-black tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(252,232,147,0.1)] hover:shadow-[0_0_20px_rgba(252,232,147,0.4)]"
         >
-          📖 {t('home.libraryBtn')}
+          📖 {t('home.libraryBtn') || 'Leer Guía Completa de Drops'}
         </a>
       </div>
     </section>
