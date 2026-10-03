@@ -224,7 +224,7 @@ function DropGuideBanner() {
         </p>
         
         <a 
-          href="/guias" 
+          href="/guia" 
           className="inline-block px-8 py-3 rounded border border-[#fce893] text-[#fce893] hover:bg-[#fce893] hover:text-[#050a12] font-black tracking-widest uppercase transition-all shadow-[0_0_15px_rgba(252,232,147,0.1)] hover:shadow-[0_0_20px_rgba(252,232,147,0.4)]"
         >
           📖 {t('home.libraryBtn') || 'Leer Guía Completa de Drops'}
