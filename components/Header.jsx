@@ -1,7 +1,7 @@
 'use client';
 
 // =========================================================================
-// MU AETHEL - Encabezado / Navegación (Diseño Congelado y Fixes Visuales)
+// MU AETHEL - Encabezado / Navegación (Con botón Rankings)
 // =========================================================================
 
 import { useState, useEffect } from 'react';
@@ -74,7 +74,7 @@ export default function Header() {
         </div>
 
         {/* CENTRO: NAVEGACIÓN */}
-        <nav className="hidden lg:flex flex-none justify-center items-center gap-8 text-[15px] font-bold tracking-wider">
+        <nav className="hidden lg:flex flex-none justify-center items-center gap-6 xl:gap-8 text-[15px] font-bold tracking-wider">
           <a href="/#inicio" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">
             {t('nav.home') === 'nav.home' ? 'Inicio' : t('nav.home')}
           </a>
@@ -86,6 +86,9 @@ export default function Header() {
           </a>
           <a href="/#descargas" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">
             {t('nav.downloads') === 'nav.downloads' ? 'Descargas' : t('nav.downloads')}
+          </a>
+          <a href="/rankings" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">
+            {t('nav.rankings') === 'nav.rankings' ? 'Rankings' : t('nav.rankings')}
           </a>
           <a href="/guia" className="text-[#fce893] drop-shadow-[0_0_6px_rgba(252,232,147,0.5)] hover:text-white hover:drop-shadow-[0_0_10px_rgba(252,232,147,0.8)] hover:-translate-y-0.5 transition-all">
             {t('nav.guide') === 'nav.guide' ? 'Guías' : t('nav.guide')}
