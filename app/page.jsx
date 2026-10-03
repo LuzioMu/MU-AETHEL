@@ -1,7 +1,7 @@
 'use client';
 
 // ============================================================================
-//  MU AETHEL - Página principal (100% Anti-Fallos Visuales)
+//  MU AETHEL - Página principal (Sincronizada y Anti-Fallos)
 // ============================================================================
 
 import { I18nProvider, useI18n } from '../lib/i18n';
@@ -13,7 +13,7 @@ import TokenEconomy from '../components/TokenEconomy';
 import DownloadCenter from '../components/DownloadCenter';
 import Footer from '../components/Footer';
 
-// Escudo anti-errores: Si falta la traducción, muestra el texto en español por defecto
+// Escudo anti-errores
 const tr = (t, path, fallback) => {
   const res = t(path);
   return res === path ? fallback : res;
@@ -90,13 +90,13 @@ function ServerFeatures() {
 
   const features = [
     {
-      icon: "⚔️️",
+      icon: "⚔",
       title: tr(t, 'features.bossesTitle', "Jefes & Bosses Custom"),
       tag: tr(t, 'features.bossesTag', "PVE EXCLUSIVO"),
       desc: tr(t, 'features.bossesDesc', "World Bosses únicos con mecánicas avanzadas y eventos de invasión con recompensas exclusivas.")
     },
     {
-      icon: "🗺️️",
+      icon: "🗺",
       title: tr(t, 'features.mapsTitle', "Mapas Remasterizados"),
       tag: tr(t, 'features.mapsTag', "ZONAS PVP / SAFE"),
       desc: tr(t, 'features.mapsDesc', "Zonas de leveo optimizadas y mapas especiales de PvP abierto sin penalizaciones.")
@@ -189,10 +189,11 @@ function CastleSiegeBanner() {
 function LiveRankings() {
   const { t } = useI18n();
 
+  // Quitamos los Resets y agregamos Hitos
   const tops = [
-    { title: tr(t, 'home.rankResets', 'Top Resets'), players: [{name: 'Luzio', val: '50 Resets'}, {name: 'Aethel', val: '48 Resets'}, {name: 'Knight', val: '45 Resets'}] },
-    { title: tr(t, 'home.rankKills', 'Top Killers (Honor)'), players: [{name: 'Asesino', val: '150 Kills'}, {name: 'DarkLord', val: '134 Kills'}, {name: 'PVPGod', val: '98 Kills'}] },
+    { title: tr(t, 'home.rankKills', 'Top Honor'), players: [{name: 'Asesino', val: '150 Kills'}, {name: 'DarkLord', val: '134 Kills'}, {name: 'PVPGod', val: '98 Kills'}] },
     { title: tr(t, 'home.rankHelpers', 'Top Helpers'), players: [{name: 'SupportElf', val: '800 Tokens'}, {name: 'Healer', val: '650 Tokens'}, {name: 'Guia', val: '500 Tokens'}] },
+    { title: tr(t, 'rankings.msHeroes', 'Héroes Pioneros'), players: [{name: 'Speedy', val: 'Nvl 400'}, {name: 'Crafter', val: 'Alas 3'}, {name: 'Slayer', val: 'Kundun'}] }
   ];
 
   return (
