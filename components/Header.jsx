@@ -87,7 +87,7 @@ export default function Header() {
           <a href="/#descargas" className="text-white drop-shadow-[0_0_6px_rgba(81,226,245,0.5)] hover:text-[#51e2f5] hover:drop-shadow-[0_0_10px_rgba(81,226,245,0.8)] hover:-translate-y-0.5 transition-all">
             {t('nav.downloads') === 'nav.downloads' ? 'Descargas' : t('nav.downloads')}
           </a>
-          <a href="/guias" className="text-[#fce893] drop-shadow-[0_0_6px_rgba(252,232,147,0.5)] hover:text-white hover:drop-shadow-[0_0_10px_rgba(252,232,147,0.8)] hover:-translate-y-0.5 transition-all">
+          <a href="/guia" className="text-[#fce893] drop-shadow-[0_0_6px_rgba(252,232,147,0.5)] hover:text-white hover:drop-shadow-[0_0_10px_rgba(252,232,147,0.8)] hover:-translate-y-0.5 transition-all">
             {t('nav.guide') === 'nav.guide' ? 'Guías' : t('nav.guide')}
           </a>
         </nav>
