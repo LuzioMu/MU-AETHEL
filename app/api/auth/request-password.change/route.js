@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../../../../lib/db';
+import { connectToDatabase } from '../../../../lib/db';
 import { jwtVerify, SignJWT } from 'jose';
-import { sendPasswordResetEmail } from '../../../../../lib/mailer';
+import { sendPasswordResetEmail } from '../../../../lib/mailer';
 
 export async function POST(request) {
   try {
