@@ -12,6 +12,9 @@
     "jose": "^6.2.12",
     "mssql": "^12.7.2",
     "next": "latest",
+    "nodemailer": "^10.0.14",
+    "otplib": "^13.5.0",
+    "qrcode": "^1.5.4",
     "react": "latest",
     "react-dom": "latest",
     "resend": "^6.31.0"

@@ -1,7 +1,7 @@
 'use client';
 
 // ============================================================================
-//  MU AETHEL - Página de Registro (/registro) - Conectada a la DB
+//  MU AETHEL - Página de Registro (/registro) - Conectada a la DB y Correos
 // ============================================================================
 
 import { useState } from 'react';
@@ -36,7 +36,7 @@ function RegisterContent() {
 
   // Función que se ejecuta al apretar "Registrarse"
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Evita que la página recargue
+    e.preventDefault();
     setStatus({ type: '', message: '' });
 
     // Validaciones básicas en el cliente
@@ -67,9 +67,8 @@ function RegisterContent() {
         // Si el servidor (route.js) tiró un error (ej: usuario ya existe)
         setStatus({ type: 'error', message: data.error || 'Error al crear la cuenta.' });
       } else {
-        // Éxito total
-        setStatus({ type: 'success', message: '¡Cuenta creada con éxito! Ya puedes ingresar al juego.' });
-        setFormData({ username: '', email: '', password: '', passwordConfirm: '', rules: false });
+        // Éxito total: Se cambia el estado para mostrar el diseño del pergamino
+        setStatus({ type: 'success', message: '¡Cuenta creada con éxito!' });
       }
     } catch (error) {
       setStatus({ type: 'error', message: 'Error de conexión. Revisa que la base de datos esté encendida.' });
@@ -94,108 +93,123 @@ function RegisterContent() {
           </p>
         </div>
 
-        {/* CARTEL DE MENSAJES (ÉXITO O ERROR) */}
-        {status.message && (
-          <div className={`mb-4 p-3 rounded text-sm font-bold text-center border ${status.type === 'error' ? 'bg-red-950/50 border-red-500/50 text-red-400' : 'bg-green-950/50 border-green-500/50 text-green-400'}`}>
-            {status.message}
+        {/* Si el registro es exitoso, mostramos el pergamino. Si no, mostramos el formulario */}
+        {status.type === 'success' ? (
+          <div className="text-center py-6 animate-fade-in">
+            <div className="text-5xl mb-4 drop-shadow-[0_0_15px_rgba(252,232,147,0.5)]">📜</div>
+            <h3 className="text-xl text-[#fce893] mb-3" style={{ fontFamily: "'Cinzel', serif" }}>¡Registro Exitoso!</h3>
+            <p className="text-slate-300 text-sm mb-6 leading-relaxed">
+              Hemos enviado un pergamino de confirmación a <br/>
+              <strong className="text-[#51e2f5]">{formData.email}</strong>.<br/>
+              <span className="text-xs text-slate-500 mt-3 block">Revisa tu bandeja de entrada (o la carpeta de SPAM) para activar tu cuenta antes de jugar.</span>
+            </p>
+            <a href="/login" className="block text-center w-full py-3 bg-[#102542] hover:bg-[#163359] text-[#51e2f5] border border-[#51e2f5] rounded font-bold uppercase tracking-wider transition-colors shadow-[0_0_10px_rgba(81,226,245,0.2)]">
+              Ir al Login
+            </a>
           </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            {/* CARTEL DE ERROR */}
+            {status.type === 'error' && (
+              <div className="mb-2 p-3 rounded text-sm font-bold text-center border bg-red-950/50 border-red-500/50 text-red-400">
+                {status.message}
+              </div>
+            )}
+            
+            <div>
+              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                {t('auth.user')} <span className="text-red-500">*</span>
+              </label>
+              <input 
+                type="text" 
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                maxLength="10"
+                required
+                className="w-full bg-[#050a12] border border-slate-700 rounded px-4 py-2.5 text-white focus:outline-none focus:border-[#51e2f5] focus:ring-1 focus:ring-[#51e2f5] transition-all placeholder:text-slate-600"
+                placeholder="Ej: AethelKing"
+              />
+              <p className="text-[10px] text-slate-500 mt-1.5">ℹ️ {t('auth.userHelp')}</p>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                {t('auth.email')} <span className="text-red-500">*</span>
+              </label>
+              <input 
+                type="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full bg-[#050a12] border border-slate-700 rounded px-4 py-2.5 text-white focus:outline-none focus:border-[#51e2f5] focus:ring-1 focus:ring-[#51e2f5] transition-all placeholder:text-slate-600"
+                placeholder="tu@correo.com"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  {t('auth.pass')} <span className="text-red-500">*</span>
+                </label>
+                <input 
+                  type="password" 
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#050a12] border border-slate-700 rounded px-4 py-2.5 text-white focus:outline-none focus:border-[#51e2f5] transition-all"
+                  placeholder="••••••••"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  {t('auth.passConfirm')} <span className="text-red-500">*</span>
+                </label>
+                <input 
+                  type="password" 
+                  name="passwordConfirm"
+                  value={formData.passwordConfirm}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#050a12] border border-slate-700 rounded px-4 py-2.5 text-white focus:outline-none focus:border-[#51e2f5] transition-all"
+                  placeholder="••••••••"
+                />
+              </div>
+            </div>
+
+            <div className="bg-[#050a12] border border-slate-800 p-3 rounded flex items-center justify-between opacity-50 cursor-not-allowed" title="Captcha se activará pronto">
+              <div className="flex items-center gap-2">
+                <input type="checkbox" disabled className="w-5 h-5" />
+                <span className="text-sm text-slate-400">No soy un robot</span>
+              </div>
+              <span className="text-xs text-slate-600 font-bold">reCAPTCHA</span>
+            </div>
+
+            <div className="flex items-start gap-2 mt-1">
+              <input 
+                type="checkbox" 
+                name="rules"
+                id="rules"
+                checked={formData.rules}
+                onChange={handleChange}
+                className="mt-1 w-4 h-4 accent-[#fce893]" 
+              />
+              <label htmlFor="rules" className="text-xs text-slate-400 leading-tight cursor-pointer hover:text-slate-200">
+                {t('auth.rulesConfirm')}
+              </label>
+            </div>
+
+            <button 
+              type="submit"
+              disabled={isLoading}
+              className={`mu-button mu-button-gold w-full py-3.5 rounded mt-2 text-lg tracking-widest uppercase font-black shadow-[0_0_15px_rgba(203,161,53,0.3)] transition-all ${isLoading ? 'opacity-70 cursor-wait' : 'hover:scale-[1.02]'}`}
+            >
+              {isLoading ? 'Conectando...' : t('auth.btnRegister')}
+            </button>
+          </form>
         )}
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-          
-          <div>
-            <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-              {t('auth.user')} <span className="text-red-500">*</span>
-            </label>
-            <input 
-              type="text" 
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              maxLength="10"
-              required
-              className="w-full bg-[#050a12] border border-slate-700 rounded px-4 py-2.5 text-white focus:outline-none focus:border-[#51e2f5] focus:ring-1 focus:ring-[#51e2f5] transition-all placeholder:text-slate-600"
-              placeholder="Ej: AethelKing"
-            />
-            <p className="text-[10px] text-slate-500 mt-1.5">ℹ️ {t('auth.userHelp')}</p>
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-              {t('auth.email')} <span className="text-red-500">*</span>
-            </label>
-            <input 
-              type="email" 
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full bg-[#050a12] border border-slate-700 rounded px-4 py-2.5 text-white focus:outline-none focus:border-[#51e2f5] focus:ring-1 focus:ring-[#51e2f5] transition-all placeholder:text-slate-600"
-              placeholder="tu@correo.com"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                {t('auth.pass')} <span className="text-red-500">*</span>
-              </label>
-              <input 
-                type="password" 
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                className="w-full bg-[#050a12] border border-slate-700 rounded px-4 py-2.5 text-white focus:outline-none focus:border-[#51e2f5] transition-all"
-                placeholder="••••••••"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
-                {t('auth.passConfirm')} <span className="text-red-500">*</span>
-              </label>
-              <input 
-                type="password" 
-                name="passwordConfirm"
-                value={formData.passwordConfirm}
-                onChange={handleChange}
-                required
-                className="w-full bg-[#050a12] border border-slate-700 rounded px-4 py-2.5 text-white focus:outline-none focus:border-[#51e2f5] transition-all"
-                placeholder="••••••••"
-              />
-            </div>
-          </div>
-
-          <div className="bg-[#050a12] border border-slate-800 p-3 rounded flex items-center justify-between opacity-50 cursor-not-allowed" title="Captcha se activará pronto">
-            <div className="flex items-center gap-2">
-              <input type="checkbox" disabled className="w-5 h-5" />
-              <span className="text-sm text-slate-400">No soy un robot</span>
-            </div>
-            <span className="text-xs text-slate-600 font-bold">reCAPTCHA</span>
-          </div>
-
-          <div className="flex items-start gap-2 mt-1">
-            <input 
-              type="checkbox" 
-              name="rules"
-              id="rules"
-              checked={formData.rules}
-              onChange={handleChange}
-              className="mt-1 w-4 h-4 accent-[#fce893]" 
-            />
-            <label htmlFor="rules" className="text-xs text-slate-400 leading-tight cursor-pointer hover:text-slate-200">
-              {t('auth.rulesConfirm')}
-            </label>
-          </div>
-
-          <button 
-            type="submit"
-            disabled={isLoading}
-            className={`mu-button mu-button-gold w-full py-3.5 rounded mt-2 text-lg tracking-widest uppercase font-black shadow-[0_0_15px_rgba(203,161,53,0.3)] transition-all ${isLoading ? 'opacity-70 cursor-wait' : 'hover:scale-[1.02]'}`}
-          >
-            {isLoading ? 'Conectando...' : t('auth.btnRegister')}
-          </button>
-        </form>
 
         <div className="mt-6 pt-5 border-t border-[#102542] text-center">
           <span className="text-xs text-slate-400">{t('auth.haveAccount')} </span>

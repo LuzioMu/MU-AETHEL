@@ -1,10 +1,10 @@
 'use client';
 
 // =========================================================================
-// MU AETHEL - Encabezado / Navegación (Con botón Rankings)
+// MU AETHEL - Encabezado / Navegación (Con Menú de Cuenta Anti-Flicker)
 // =========================================================================
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useI18n } from '../lib/i18n';
 
 // Banderas SVG nativas
@@ -49,15 +49,40 @@ const languages = [
 export default function Header() {
   const { lang, setLang, t } = useI18n();
   const [user, setUser] = useState(null);
+  
+  // ESTADO NUEVO: Para saber si estamos comprobando la sesión
+  const [isAuthChecking, setIsAuthChecking] = useState(true);
+  
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     fetch('/api/auth/session')
       .then(res => res.ok ? res.json() : { loggedIn: false })
       .then(data => {
         if (data.loggedIn) setUser(data.username);
+        setIsAuthChecking(false); // Ya sabemos quién es, dejamos de cargar
       })
-      .catch(() => setUser(null));
+      .catch(() => {
+        setUser(null);
+        setIsAuthChecking(false); // Hubo error, mostramos los botones
+      });
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [dropdownRef]);
+
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    window.location.href = '/'; 
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-2 border-[#102542] bg-gradient-to-r from-[#050a12]/95 via-[#0a182e]/95 to-[#050a12]/95 backdrop-blur-md shadow-lg shadow-[#000000]/50">
@@ -115,13 +140,46 @@ export default function Header() {
             ))}
           </div>
 
-          {user ? (
-            <a 
-              href="/cuenta" 
-              className="hidden sm:flex items-center justify-center px-6 py-2 rounded-full bg-gradient-to-b from-[#10567e] to-[#167d9e] border border-[#51e2f5] text-white font-black text-sm tracking-wide shadow-[0_0_15px_rgba(81,226,245,0.4)] hover:shadow-[0_0_20px_rgba(81,226,245,0.7)] hover:scale-105 transition-all"
-            >
-              {user}
-            </a>
+          {/* LÓGICA DE CARGA ANTI-PARPADEO */}
+          {isAuthChecking ? (
+            <div className="hidden sm:block w-32 h-10 bg-[#102542]/50 animate-pulse rounded-full"></div>
+          ) : user ? (
+            <div className="relative hidden sm:block" ref={dropdownRef}>
+              <button 
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className={`flex items-center gap-2 px-6 py-2 rounded-full border font-black text-sm tracking-wide transition-all ${
+                  isDropdownOpen 
+                    ? 'bg-[#102542] border-[#fce893] text-[#fce893] shadow-[0_0_15px_rgba(252,232,147,0.4)]'
+                    : 'bg-gradient-to-b from-[#10567e] to-[#167d9e] border-[#51e2f5] text-white shadow-[0_0_15px_rgba(81,226,245,0.4)] hover:shadow-[0_0_20px_rgba(81,226,245,0.7)] hover:scale-105'
+                }`}
+              >
+                {user}
+                <span className={`text-[10px] transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : 'rotate-0'}`}>▼</span>
+              </button>
+
+              {isDropdownOpen && (
+                <div className="absolute right-0 mt-3 w-48 bg-[#050a12] border border-[#102542] rounded-lg shadow-2xl overflow-hidden z-50 animate-fade-in origin-top-right">
+                  <a 
+                    href="/cuenta" 
+                    className="block px-4 py-3 text-sm text-slate-300 font-bold tracking-wider hover:bg-[#102542] hover:text-[#51e2f5] transition-colors border-b border-[#102542]/50"
+                  >
+                    🛡️ Mi Cuenta
+                  </a>
+                  <a 
+                    href="/cuenta#opciones" 
+                    className="block px-4 py-3 text-sm text-slate-300 font-bold tracking-wider hover:bg-[#102542] hover:text-[#fce893] transition-colors border-b border-[#102542]"
+                  >
+                    ⚙️ Opciones
+                  </a>
+                  <button 
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-3 text-sm text-red-400 font-black uppercase tracking-widest hover:bg-red-950/40 hover:text-red-300 transition-colors"
+                  >
+                    🚪 Salir
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <>
               <a href="/login" className="hidden sm:block text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-600 hover:decoration-[#51e2f5] transition-all">

@@ -5,113 +5,196 @@ import { I18nProvider, useI18n } from '../../lib/i18n';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-// MOCK DE NOTICIAS (Acá agregarás tus noticias reales después en el idioma que quieras)
-const newsData = [
-  {
-    id: 1,
-    date: '01 Oct 2026',
-    category: 'Transparencia',
-    title: 'Reporte Financiero: Donaciones Mensuales',
-    excerpt: 'Detalle de los ingresos y egresos del servidor para mantener Mu Aethel libre de P2W.',
-    content: `Como prometimos desde el día uno, Mu Aethel se mantiene gracias a la comunidad. Este mes hemos recaudado un total de $350 mediante donaciones voluntarias de nuestros jugadores. 
-    \n\n**¿En qué se usó el dinero?**\n- $120: Alquiler del Servidor VPS (Hostinger).\n- $50: Protección Anti-DDoS Avanzada.\n- $80: Renovación de dominios y licencias web.\n- $100: Guardado para el fondo de premios del próximo Torneo de Clases.\n\nGracias a todos los que creen en este proyecto NO-P2W. Ustedes hacen que el reino siga vivo.`
-  },
-  {
-    id: 2,
-    date: '28 Sep 2026',
-    category: 'Eventos',
-    title: 'Ganadores del Castle Siege',
-    excerpt: 'La alianza BloodOath se corona como dueña del Valle de Loren tras una batalla épica.',
-    content: `El Castillo de Loren tiene nuevos dueños. En una batalla que quedará en la historia del servidor, la alianza **BloodOath** logró registrar el sello en los últimos 3 minutos del evento, arrebatándole el trono a TheKings.\n\nFelicidades al Guild Master y a todos los miembros. Podrán disfrutar del mapa exclusivo de Land of Trials durante toda esta semana.`
-  },
-  {
-    id: 3,
-    date: '25 Sep 2026',
-    category: 'Actualización',
-    title: 'Parche 1.0.2: Ajuste de Resets y Balance',
-    excerpt: 'Nuevos límites de reset semanales y mejora en el drop de Chaos Castle.',
-    content: `Hemos escuchado el feedback de la comunidad. A partir de hoy, aplicamos los siguientes cambios:\n\n1. **Límite de Resets:** Para mantener la economía sana y dar oportunidad a los nuevos, el límite máximo se ajusta a 50 resets esta semana.\n2. **Chaos Castle:** Se aumentó un 15% la probabilidad de obtener items Ancient en los niveles 5 y 6.\n3. **Clases:** Pequeño buff de daño al Skill 'Twisting Slash' del Dark Knight en PVE.`
-  }
-];
-
 function NoticiasContent() {
   const { t } = useI18n();
-  const [activeNews, setActiveNews] = useState(newsData[0]);
+
+  // El array de noticias se recalcula automáticamente cuando cambiás de idioma
+  const noticiasData = [
+    {
+      id: 1,
+      categoria: 'EVENTOS',
+      fecha: '04 Oct 2026',
+      titulo: t('newsPage.eventsTitle'),
+      resumen: t('newsPage.eventsDesc'),
+      contenido: (
+        <>
+          <p className="mb-4">{t('newsPage.eventsBody1')}</p>
+          <p className="mb-4">{t('newsPage.eventsBody2')}</p>
+          <p>{t('newsPage.eventsBody3')}</p>
+        </>
+      )
+    },
+    {
+      id: 2,
+      categoria: 'COMUNIDAD',
+      fecha: '04 Oct 2026',
+      titulo: t('newsPage.commTitle'),
+      resumen: t('newsPage.commDesc'),
+      contenido: (
+        <>
+          <p className="mb-4">{t('newsPage.commBody1')}</p>
+          <p className="mb-6">{t('newsPage.commBody2')}</p>
+          
+          <div className="text-center mt-8 p-6 bg-[#102542]/50 border border-[#163359] rounded-lg">
+            <h4 className="text-[#51e2f5] font-bold uppercase tracking-widest mb-4">{t('newsPage.commDonation')}</h4>
+            <a 
+              href="https://paypal.me/TuEnlaceAqui" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-3 bg-[#00457C] hover:bg-[#0079C1] text-white font-bold rounded shadow-[0_0_15px_rgba(0,121,193,0.4)] transition-all uppercase tracking-widest text-sm"
+            >
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a2.008 2.008 0 0 0-1.967 1.69L6.16 22.56l4.114.042c.733 0 1.354-.534 1.469-1.258l.784-4.975c.09-.571.583-.996 1.161-.996h.712c4.227 0 7.249-1.787 8.121-6.103.18-.891.242-1.636.142-2.353z"/></svg>
+              {t('newsPage.commBtn')}
+            </a>
+            <p className="text-[10px] text-slate-400 mt-4">{t('newsPage.commNote')}</p>
+          </div>
+        </>
+      )
+    }
+  ];
+
+  // Magia pura: en vez de guardar todo el objeto, solo guardamos el número (1 o 2)
+  const [noticiaActivaId, setNoticiaActivaId] = useState(1);
+  const noticiaActiva = noticiasData.find(n => n.id === noticiaActivaId);
 
   return (
-    <main className="relative z-10 py-16 bg-[#050a12]/90 backdrop-blur-md min-h-screen">
+    <main className="relative z-10 py-17 min-h-screen bg-[#050a12]/90 backdrop-blur-md scroll-smooth">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         
-        {/* Cabecera */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl text-white drop-shadow-[0_0_15px_rgba(81,226,245,0.3)] mb-3" style={{ fontFamily: "'Cinzel', serif" }}>
+          <h1 className="text-4xl text-[#fce893] mb-2 uppercase tracking-widest drop-shadow-[0_0_10px_rgba(252,232,147,0.3)]" style={{ fontFamily: "'Cinzel', serif" }}>
             {t('newsPage.title')}
           </h1>
-          <p className="text-slate-400 max-w-2xl mx-auto">{t('newsPage.subtitle')}</p>
+          <p className="text-sm text-slate-400">{t('newsPage.subtitle')}</p>
         </div>
 
-        {/* Layout Dividido */}
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
-          {/* Columna Izquierda: Lista de Noticias */}
-          <div className="lg:w-1/3 flex flex-col gap-4">
-            {newsData.map((item) => (
-              <button 
-                key={item.id}
-                onClick={() => setActiveNews(item)}
-                className={`text-left p-5 rounded border transition-all ${
-                  activeNews.id === item.id 
-                    ? 'bg-[#10567e]/30 border-[#51e2f5] shadow-[0_0_15px_rgba(81,226,245,0.15)]' 
-                    : 'bg-[#0a111c] border-[#102542] hover:border-slate-500'
+          <div className="flex flex-col gap-4">
+            {noticiasData.map((noticia) => (
+              <button
+                key={noticia.id}
+                onClick={() => setNoticiaActivaId(noticia.id)}
+                className={`text-left p-5 rounded-lg border transition-all ${
+                  noticiaActiva.id === noticia.id 
+                    ? 'bg-[#102542] border-[#51e2f5] shadow-[0_0_15px_rgba(81,226,245,0.2)]' 
+                    : 'bg-[#0a111c] border-[#163359] hover:border-[#fce893]/50 hover:bg-[#102542]/50'
                 }`}
               >
                 <div className="flex justify-between items-center mb-2">
-                  <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded ${
-                    item.category === 'Transparencia' ? 'bg-green-900/50 text-green-400' : 
-                    item.category === 'Eventos' ? 'bg-red-900/50 text-red-400' : 'bg-blue-900/50 text-blue-400'
-                  }`}>
-                    {item.category}
+                  <span className={`text-[10px] font-bold uppercase tracking-widest ${noticiaActiva.id === noticia.id ? 'text-[#51e2f5]' : 'text-slate-500'}`}>
+                    {noticia.categoria}
                   </span>
-                  <span className="text-xs text-slate-500 font-mono">{item.date}</span>
+                  <span className="text-[10px] text-slate-500">{noticia.fecha}</span>
                 </div>
-                <h3 className={`text-lg font-bold mb-1 ${activeNews.id === item.id ? 'text-white' : 'text-slate-300'}`}>
-                  {item.title}
+                <h3 className="text-md text-[#fce893] font-bold uppercase tracking-wider mb-2">
+                  {noticia.titulo}
                 </h3>
-                <p className="text-xs text-slate-400 line-clamp-2">{item.excerpt}</p>
+                <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                  {noticia.resumen}
+                </p>
               </button>
             ))}
           </div>
 
-          {/* Columna Derecha: Lectura Completa */}
-          <div className="lg:w-2/3">
-            {activeNews ? (
-              <div className="bg-[#0a111c] border border-[#102542] rounded-lg p-8 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#fce893] to-transparent opacity-60"></div>
-                
-                <span className="text-[#51e2f5] text-xs font-bold tracking-widest uppercase mb-2 block">
-                  {activeNews.category} • {activeNews.date}
-                </span>
-                
-                <h2 className="text-3xl text-white mb-6 font-bold" style={{ fontFamily: "'Cinzel', serif" }}>
-                  {activeNews.title}
-                </h2>
-                
-                <div className="text-slate-300 leading-relaxed space-y-4 text-sm">
-                  {activeNews.content.split('\n').map((paragraph, idx) => (
-                    <p key={idx} dangerouslySetInnerHTML={{ 
-                      __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<span class="text-[#fce893] font-bold">$1</span>') 
-                    }} />
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div className="h-full flex items-center justify-center border border-dashed border-[#102542] rounded-lg bg-[#050a12]/50 p-10">
-                <p className="text-slate-500">{t('newsPage.selectArticle')}</p>
-              </div>
-            )}
+          <div className="lg:col-span-2 mu-frame bg-[#0a111c]/95 border border-[#102542] rounded-lg p-8 shadow-2xl h-fit">
+            <div className="flex justify-between items-center mb-4 border-b border-[#163359] pb-4">
+              <span className="text-xs font-bold text-[#51e2f5] uppercase tracking-widest">
+                {noticiaActiva.categoria}
+              </span>
+              <span className="text-xs text-slate-400">{noticiaActiva.fecha}</span>
+            </div>
+            <h2 className="text-2xl text-[#fce893] font-black uppercase tracking-widest mb-6" style={{ fontFamily: "'Cinzel', serif" }}>
+              {noticiaActiva.titulo}
+            </h2>
+            <div className="text-sm text-slate-300 leading-loose">
+              {noticiaActiva.contenido}
+            </div>
           </div>
 
         </div>
+
+        <div className="mt-[45vh] border-t border-[#102542] pt-24 pb-12">
+          
+          <div className="max-w-5xl mx-auto">
+            
+            <div id="reglas" style={{ scrollMarginTop: '145px' }}>
+              <h2 className="text-4xl text-[#51e2f5] font-black uppercase tracking-widest mb-8 drop-shadow-[0_0_8px_rgba(81,226,245,0.4)]" style={{ fontFamily: "'Cinzel', serif" }}>
+                {t('legal.rulesTitle')}
+              </h2>
+              <div className="bg-[#0a111c]/90 border border-[#163359] p-8 md:p-12 rounded-xl shadow-2xl">
+                <ul className="space-y-8 text-sm text-slate-300">
+                  <li className="flex gap-5">
+                    <span className="text-3xl mt-1">🚫</span>
+                    <div>
+                      <strong className="block text-red-400 text-lg uppercase tracking-widest mb-2">{t('legal.rulesHacks')}</strong>
+                      <p className="leading-relaxed">{t('legal.rulesHacksDesc')}</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-5">
+                    <span className="text-3xl mt-1">💻</span>
+                    <div>
+                      <strong className="block text-[#fce893] text-lg uppercase tracking-widest mb-2">{t('legal.rulesIP')}</strong>
+                      <p className="leading-relaxed">{t('legal.rulesIPDesc')}</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-5">
+                    <span className="text-3xl mt-1">🗣️</span>
+                    <div>
+                      <strong className="block text-[#51e2f5] text-lg uppercase tracking-widest mb-2">{t('legal.rulesConduct')}</strong>
+                      <p className="leading-relaxed">{t('legal.rulesConductDesc')}</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-5">
+                    <span className="text-3xl mt-1">🛑</span>
+                    <div>
+                      <strong className="block text-slate-400 text-lg uppercase tracking-widest mb-2">{t('legal.rulesFraud')}</strong>
+                      <p className="leading-relaxed">{t('legal.rulesFraudDesc')}</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="py-[150px] flex items-center justify-center relative">
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-[#163359] to-transparent"></div>
+              <div className="absolute w-2 h-2 rotate-45 bg-[#0a111c] border border-[#fce893]/50 shadow-[0_0_8px_rgba(252,232,147,0.3)]"></div>
+            </div>
+
+            <div id="terminos" style={{ scrollMarginTop: '305px' }}>
+              <h2 className="text-4xl text-[#fce893] font-black uppercase tracking-widest mb-8 drop-shadow-[0_0_8px_rgba(252,232,147,0.4)]" style={{ fontFamily: "'Cinzel', serif" }}>
+                {t('legal.termsTitle')}
+              </h2>
+              <div className="bg-[#0a111c]/90 border border-[#163359] p-8 md:p-12 rounded-xl shadow-2xl">
+                <div className="space-y-6 text-sm text-slate-400 leading-relaxed">
+                  <p>{t('legal.termsDesc1')}</p>
+                  <p>{t('legal.termsDesc2')}</p>
+                  <p>{t('legal.termsDesc3')}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="py-[140px] flex items-center justify-center relative">
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-[#163359] to-transparent"></div>
+              <div className="absolute w-2 h-2 rotate-45 bg-[#0a111c] border border-green-500/50 shadow-[0_0_8px_rgba(34,197,94,0.3)]"></div>
+            </div>
+
+            <div id="privacidad" style={{ scrollMarginTop: '160px' }}>
+              <h2 className="text-4xl text-green-400 font-black uppercase tracking-widest mb-8 drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]" style={{ fontFamily: "'Cinzel', serif" }}>
+                {t('legal.privacyTitle')}
+              </h2>
+              <div className="bg-[#0a111c]/90 border border-[#163359] p-8 md:p-12 rounded-xl shadow-2xl">
+                <div className="space-y-6 text-sm text-slate-400 leading-relaxed">
+                  <p>{t('legal.privacyDesc1')}</p>
+                  <p>{t('legal.privacyDesc2')}</p>
+                  <p>{t('legal.privacyDesc3')}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </main>
   );

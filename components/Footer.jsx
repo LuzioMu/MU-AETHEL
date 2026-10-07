@@ -1,3 +1,4 @@
+
 'use client';
 
 // ============================================================================
@@ -21,7 +22,7 @@ export default function Footer() {
     <footer className="border-t border-[#102542] bg-[#050a12]/95 backdrop-blur-md">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
         
-        {/* ESTADO DEL SERVIDOR (Minimalista) */}
+        {/* ESTADO DEL SERVIDOR */}
         <section>
           <h2 className="text-xs font-bold tracking-widest text-[#51e2f5] uppercase mb-4">
             {t('footer.serverStatus')}
@@ -39,7 +40,7 @@ export default function Footer() {
           </div>
         </section>
 
-        {/* COMUNIDAD (Nuevas Redes) */}
+        {/* COMUNIDAD */}
         <section>
           <h2 className="text-xs font-bold tracking-widest text-[#51e2f5] uppercase mb-4">
             {t('footer.community')}
@@ -69,9 +70,9 @@ export default function Footer() {
             {t('footer.supportBody')}
           </p>
           <ul className="space-y-2 text-sm font-medium">
-            <li><a href="/reglas" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('footer.rules')}</a></li>
-            <li><a href="/terminos" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('footer.terms')}</a></li>
-            <li><a href="/privacidad" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('footer.privacy')}</a></li>
+            <li><a href="/noticias#reglas" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('footer.rules')}</a></li>
+            <li><a href="/noticias#terminos" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('footer.terms')}</a></li>
+            <li><a href="/noticias#privacidad" className="text-slate-300 hover:text-[#51e2f5] transition-colors">{t('footer.privacy')}</a></li>
           </ul>
         </section>
       </div>
