@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '../../../../../lib/db';
+import { connectToDatabase } from '../../../../lib/db';
 import { jwtVerify } from 'jose';
 
 export async function POST(request) {
