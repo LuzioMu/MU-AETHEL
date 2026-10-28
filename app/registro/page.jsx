@@ -10,9 +10,9 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 function RegisterContent() {
+  // ACÁ ESTÁ EL CAMBIO 1: Agregamos 'lang' para saber en qué idioma está la página
   const { t, lang } = useI18n();
   
-  // Estados para guardar lo que escribe el usuario
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -21,11 +21,9 @@ function RegisterContent() {
     rules: false
   });
   
-  // Estados para manejar la carga y los mensajes
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState({ type: '', message: '' });
 
-  // Función que actualiza el estado cuando el usuario escribe
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
@@ -34,12 +32,10 @@ function RegisterContent() {
     }));
   };
 
-  // Función que se ejecuta al apretar "Registrarse"
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ type: '', message: '' });
 
-    // Validaciones básicas en el cliente
     if (formData.password !== formData.passwordConfirm) {
       return setStatus({ type: 'error', message: 'Las contraseñas no coinciden.' });
     }
@@ -50,25 +46,23 @@ function RegisterContent() {
     setIsLoading(true);
 
     try {
-      // Llamamos a la API que creaste en route.js
       const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({
-  username: formData.username,
-  email: formData.email,
-  password: formData.password,
-  language: lang || 'es' // Enviamos el idioma actual al backend
-})
+        // ACÁ ESTÁ EL CAMBIO 2: Mandamos el idioma al servidor junto con los datos
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          language: lang || 'es'
+        })
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        // Si el servidor (route.js) tiró un error (ej: usuario ya existe)
         setStatus({ type: 'error', message: data.error || 'Error al crear la cuenta.' });
       } else {
-        // Éxito total: Se cambia el estado para mostrar el diseño del pergamino
         setStatus({ type: 'success', message: '¡Cuenta creada con éxito!' });
       }
     } catch (error) {
@@ -94,7 +88,6 @@ body: JSON.stringify({
           </p>
         </div>
 
-        {/* Si el registro es exitoso, mostramos el pergamino. Si no, mostramos el formulario */}
         {status.type === 'success' ? (
           <div className="text-center py-6 animate-fade-in">
             <div className="text-5xl mb-4 drop-shadow-[0_0_15px_rgba(252,232,147,0.5)]">📜</div>
@@ -110,7 +103,6 @@ body: JSON.stringify({
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-            {/* CARTEL DE ERROR */}
             {status.type === 'error' && (
               <div className="mb-2 p-3 rounded text-sm font-bold text-center border bg-red-950/50 border-red-500/50 text-red-400">
                 {status.message}
