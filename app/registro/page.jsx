@@ -10,7 +10,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 function RegisterContent() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   
   // Estados para guardar lo que escribe el usuario
   const [formData, setFormData] = useState({
@@ -54,11 +54,12 @@ function RegisterContent() {
       const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: formData.username,
-          email: formData.email,
-          password: formData.password
-        })
+body: JSON.stringify({
+  username: formData.username,
+  email: formData.email,
+  password: formData.password,
+  language: lang || 'es' // Enviamos el idioma actual al backend
+})
       });
 
       const data = await res.json();
